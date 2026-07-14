@@ -1,0 +1,658 @@
+<title>Statistics &amp; Data Analysis — Midterm Cheat Sheet</title>
+<style>
+:root{
+  --ink:#161a20; --paper:#ffffff; --panel:#f4f7fb; --panel2:#eef3f9;
+  --accent:#1f4e79; --accent-d:#16385a; --accent2:#9a5b12;
+  --tint:#eaf1f9; --tint-line:#c9d8e8;
+  --border:#cdd7e2; --rule:#dbe3ec; --muted:#5a6472;
+  --tip-bg:#e9f3ec; --tip-ink:#215c3c; --tip-line:#8dc4a5;
+  --trap-bg:#fbece7; --trap-ink:#9d3521; --trap-line:#e6a793;
+  --ans-bg:#fbf1da; --ans-ink:#8a5a0c; --ans-line:#e3c583;
+  --chip:#dfe9f4;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ink:#e6ebf2; --paper:#12151b; --panel:#1a1f27; --panel2:#1e242d;
+    --accent:#6fa8dc; --accent-d:#4a7bab; --accent2:#d9a441;
+    --tint:#1b2230; --tint-line:#31404f;
+    --border:#333c48; --rule:#2a323c; --muted:#9aa6b4;
+    --tip-bg:#16261d; --tip-ink:#8fd6ac; --tip-line:#2f5a41;
+    --trap-bg:#2a1712; --trap-ink:#eda28c; --trap-line:#67382b;
+    --ans-bg:#2a2110; --ans-ink:#e8c274; --ans-line:#5c481f;
+    --chip:#243040;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#e6ebf2; --paper:#12151b; --panel:#1a1f27; --panel2:#1e242d;
+  --accent:#6fa8dc; --accent-d:#4a7bab; --accent2:#d9a441;
+  --tint:#1b2230; --tint-line:#31404f; --border:#333c48; --rule:#2a323c; --muted:#9aa6b4;
+  --tip-bg:#16261d; --tip-ink:#8fd6ac; --tip-line:#2f5a41;
+  --trap-bg:#2a1712; --trap-ink:#eda28c; --trap-line:#67382b;
+  --ans-bg:#2a2110; --ans-ink:#e8c274; --ans-line:#5c481f; --chip:#243040;
+}
+:root[data-theme="light"]{
+  --ink:#161a20; --paper:#ffffff; --panel:#f4f7fb; --panel2:#eef3f9;
+  --accent:#1f4e79; --accent-d:#16385a; --accent2:#9a5b12;
+  --tint:#eaf1f9; --tint-line:#c9d8e8; --border:#cdd7e2; --rule:#dbe3ec; --muted:#5a6472;
+  --tip-bg:#e9f3ec; --tip-ink:#215c3c; --tip-line:#8dc4a5;
+  --trap-bg:#fbece7; --trap-ink:#9d3521; --trap-line:#e6a793;
+  --ans-bg:#fbf1da; --ans-ink:#8a5a0c; --ans-line:#e3c583; --chip:#dfe9f4;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:9.6px; line-height:1.34; -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+.page{max-width:1050px;margin:0 auto;padding:16px 18px 26px}
+
+/* ---- Masthead ---- */
+.masthead{
+  border:1.5px solid var(--accent); border-radius:8px; overflow:hidden; margin-bottom:10px;
+  break-inside:avoid; column-span:all; -webkit-column-span:all;
+}
+.mast-top{background:var(--accent);color:#fff;padding:9px 13px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.mast-top h1{font-family:Georgia,"Times New Roman",serif;font-size:20px;margin:0;line-height:1.05;letter-spacing:.2px}
+.mast-top .sub{font-size:9px;opacity:.9;margin-top:2px}
+.mast-top .who{text-align:right;font-size:8.6px;opacity:.92;line-height:1.3;white-space:nowrap}
+.mast-body{padding:8px 13px;background:var(--panel)}
+.mast-body p{margin:0 0 5px}
+.mast-lead{font-size:9.2px;color:var(--muted)}
+.blueprint{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:7px}
+.bp{background:var(--paper);border:1px solid var(--border);border-radius:5px;padding:5px 7px;border-left:3px solid var(--accent)}
+.bp b{display:block;font-size:8.9px;color:var(--accent);font-family:Georgia,serif}
+.bp span{font-size:8.2px;color:var(--muted)}
+
+/* ---- Columns ---- */
+.cols{column-count:2;column-gap:15px}
+@media (min-width:1400px){.cols{column-count:2}}
+
+/* ---- Section headers span both columns ---- */
+h2.sec{
+  column-span:all;-webkit-column-span:all;
+  background:linear-gradient(90deg,var(--accent),var(--accent-d));
+  color:#fff;font-family:Georgia,serif;font-size:12.5px;font-weight:700;
+  margin:12px 0 8px;padding:5px 10px;border-radius:5px;display:flex;align-items:center;gap:8px;
+  break-after:avoid;
+}
+h2.sec .n{font-size:11px;background:rgba(255,255,255,.22);border-radius:4px;padding:1px 7px}
+h2.sec:first-child{margin-top:2px}
+h3.subsec{column-span:all;-webkit-column-span:all;background:var(--ans-bg);color:var(--ans-ink);
+  font-family:Georgia,serif;font-size:11px;font-weight:700;margin:9px 0 6px;padding:3px 10px;
+  border:1px solid var(--ans-line);border-radius:4px;break-after:avoid}
+
+.block{break-inside:avoid;margin-bottom:8px}
+h3{font-size:10px;font-weight:700;color:var(--accent);margin:0 0 3px;letter-spacing:.15px;
+   border-bottom:1.5px solid var(--tint-line);padding-bottom:2px}
+h4{font-size:9.3px;font-weight:700;margin:6px 0 2px;color:var(--ink)}
+p{margin:0 0 4px}
+ul{margin:2px 0 5px;padding-left:14px}
+li{margin:0 0 2.5px}
+b,strong{font-weight:700}
+.muted{color:var(--muted)}
+.small{font-size:8.6px}
+.bar{text-decoration:overline}
+sub,sup{font-size:76%}
+
+/* ---- Formula boxes ---- */
+.f{background:var(--tint);border:1px solid var(--tint-line);border-left:3px solid var(--accent);
+   border-radius:4px;padding:4px 8px;margin:4px 0;font-size:9.5px}
+.f.key{background:var(--panel2);border-left-width:4px}
+.f .lab{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:1px}
+.eq{font-family:"Cambria Math",Georgia,serif;font-style:normal}
+.var{font-style:italic;font-family:Georgia,serif}
+
+/* ---- callouts ---- */
+.tip,.trap{border-radius:4px;padding:4px 8px;margin:4px 0;font-size:8.9px;border:1px solid}
+.tip{background:var(--tip-bg);color:var(--tip-ink);border-color:var(--tip-line)}
+.trap{background:var(--trap-bg);color:var(--trap-ink);border-color:var(--trap-line)}
+.tip b,.trap b{font-weight:700}
+.tag{display:inline-block;font-size:7.6px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+     padding:1px 5px;border-radius:3px;margin-right:4px;vertical-align:1px}
+.tag.tp{background:var(--tip-line);color:#0c2c1c}
+.tag.tr{background:var(--trap-line);color:#3a140c}
+
+/* ---- worked example ---- */
+.ex{border:1px solid var(--border);border-radius:5px;padding:5px 8px;margin:5px 0;background:var(--panel);break-inside:avoid}
+.ex .h{font-size:8.6px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin-bottom:2px}
+.ans{background:var(--ans-bg);color:var(--ans-ink);border:1px solid var(--ans-line);border-radius:3px;
+     padding:0 4px;font-weight:700;display:inline-block}
+
+/* ---- tables ---- */
+table{border-collapse:collapse;width:100%;font-size:8.7px;margin:3px 0 5px}
+th,td{border:1px solid var(--border);padding:2px 4px;text-align:center}
+th{background:var(--panel2);font-weight:700;color:var(--accent)}
+td.l,th.l{text-align:left}
+table.zt td,table.zt th{padding:1.5px 3px;font-variant-numeric:tabular-nums}
+.tnum{font-variant-numeric:tabular-nums}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+
+hr.soft{border:none;border-top:1px solid var(--rule);margin:6px 0}
+
+.footer{column-span:all;margin-top:12px;border-top:1.5px solid var(--accent);padding-top:6px;
+        font-size:8.2px;color:var(--muted);display:flex;justify-content:space-between;gap:10px}
+
+@media print{
+  @page{size:Letter;margin:0.42in 0.38in 0.5in 0.38in}
+  html{ --ink:#161a20; --paper:#fff; }
+  body{font-size:9.5px;background:#fff;color:#161a20}
+  :root{
+    --ink:#161a20; --paper:#ffffff; --panel:#f4f7fb; --panel2:#eef3f9;
+    --accent:#1f4e79; --accent-d:#16385a; --accent2:#9a5b12;
+    --tint:#eaf1f9; --tint-line:#c9d8e8; --border:#c2cdda; --rule:#dbe3ec; --muted:#55606e;
+    --tip-bg:#e9f3ec; --tip-ink:#215c3c; --tip-line:#8dc4a5;
+    --trap-bg:#fbece7; --trap-ink:#9d3521; --trap-line:#e6a793;
+    --ans-bg:#fbf1da; --ans-ink:#8a5a0c; --ans-line:#e3c583; --chip:#dfe9f4;
+  }
+  .page{max-width:none;margin:0;padding:0}
+  h2.sec{box-shadow:none}
+}
+</style>
+
+<div class="page">
+<div class="cols">
+
+<!-- ============ MASTHEAD ============ -->
+<div class="masthead">
+  <div class="mast-top">
+    <div>
+      <h1>Statistics &amp; Data Analysis</h1>
+      <div class="sub">Comprehensive Midterm Cheat Sheet · Probability → Random Variables → Distributions → Normal &amp; CLT</div>
+    </div>
+    <div class="who">Prof. Avi Giloni<br>Summer 2026<br>Classes 01–04</div>
+  </div>
+  <div class="mast-body">
+    <p class="mast-lead"><b>How to use:</b> Formulas sit in blue boxes; <span class="tag tp">method</span> notes in green; <span class="tag tr">trap</span> = the mistakes that cost points. Every rule is cross-checked against the sample-midterm &amp; HW solution keys. The fully-worked Sample Midterm is <b>§9</b>.</p>
+    <div class="blueprint">
+      <div class="bp"><b>Probability</b><span>Conditional, Bayes, unions, total prob., independence, tables</span></div>
+      <div class="bp"><b>Random Variables</b><span>PMF/CDF, E(X), Var, σ; E(XY); rules for aX+bY</span></div>
+      <div class="bp"><b>Distributions</b><span>Binomial, Poisson, Hypergeometric, Covariance/Correlation</span></div>
+      <div class="bp"><b>Normal &amp; CLT</b><span>z-scores, z-table, sum vs. mean, normal≈binomial</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 1: PROBABILITY ============ -->
+<h2 class="sec"><span class="n">§1</span> Probability Foundations</h2>
+
+<div class="block">
+<h3>Vocabulary</h3>
+<ul>
+<li><b>Experiment</b> → process with chance outcomes. <b>Sample space (S)</b> = set of <i>all</i> outcomes. <b>Event</b> = a subset of outcomes (capital letters A, B, …).</li>
+<li><b>Simple events</b> = the most basic, mutually-exclusive outcomes; S is the collection of all of them. <i>Ex:</i> two coins → S = {HH, HT, TH, TT}.</li>
+<li><b>Mutually exclusive</b> = both cannot happen at once (A∩B = ∅).</li>
+<li><b>Intersection A∩B</b> = both occur. <b>Union A∪B</b> = A or B or both.</li>
+</ul>
+</div>
+
+<div class="block">
+<h3>The Core Probability Rules</h3>
+<div class="f"><span class="lab">Range &amp; total</span><span class="eq">0 ≤ P(A) ≤ 1&nbsp;&nbsp;·&nbsp;&nbsp;P(S) = 1&nbsp;&nbsp;·&nbsp;&nbsp;Σ p(all outcomes) = 1</span></div>
+<div class="f"><span class="lab">Complement</span><span class="eq">P(A) = 1 − P(<span class="bar">A</span>)</span></div>
+<div class="f"><span class="lab">Equally-likely outcomes</span><span class="eq">P(A) = m / M&nbsp;&nbsp;<span class="muted">(m favorable of M equally-likely)</span></span></div>
+<div class="f"><span class="lab">Addition (general)</span><span class="eq">P(A∪B) = P(A) + P(B) − P(A∩B)</span></div>
+<div class="f"><span class="lab">Addition (mutually excl.)</span><span class="eq">P(A∪B) = P(A) + P(B)</span></div>
+<div class="f key"><span class="lab">Multiplication</span><span class="eq">P(A∩B) = P(A|B)·P(B) = P(B|A)·P(A)</span></div>
+<div class="f key"><span class="lab">Independent events</span><span class="eq">P(A∩B) = P(A)·P(B)</span></div>
+</div>
+
+<div class="block">
+<h3>Conditional Probability &amp; Independence</h3>
+<div class="f key"><span class="lab">Conditional</span><span class="eq">P(A|B) = P(A∩B) / P(B)</span></div>
+<p><b>Independence test</b> — A, B independent iff any one holds:</p>
+<div class="f"><span class="eq">P(A|B) = P(A)&nbsp;&nbsp;⇔&nbsp;&nbsp;P(B|A) = P(B)&nbsp;&nbsp;⇔&nbsp;&nbsp;P(A∩B) = P(A)P(B)</span></div>
+<div class="tip"><span class="tag tp">method</span>To decide independence: compute P(A)·P(B) and compare to the given P(A∩B). Equal → independent; not equal → dependent.</div>
+<div class="trap"><span class="tag tr">trap</span><b>Mutually exclusive ≠ independent.</b> If A, B are mutually exclusive with P&gt;0 they are <i>dependent</i> (knowing A happened forces P(B)=0). Conditioning <i>shrinks</i> the sample space.</div>
+</div>
+
+<div class="block">
+<h3>Total Probability &amp; Bayes' Theorem</h3>
+<div class="f key"><span class="lab">Law of total probability</span><span class="eq">P(A) = P(A|B)·P(B) + P(A|<span class="bar">B</span>)·P(<span class="bar">B</span>)</span></div>
+<div class="f key"><span class="lab">Bayes' theorem</span><span class="eq">P(B|A) = <sup>P(A|B)·P(B)</sup>⁄<sub>P(A|B)·P(B) + P(A|<span class="bar">B</span>)·P(<span class="bar">B</span>)</sub></span></div>
+<div class="tip"><span class="tag tp">method</span><b>Two-stage / "jar" &amp; testing problems:</b> Stage 1 = which path (die roll, coin, jar). Stage 2 = outcome given the path. Multiply along a branch; add branches for total probability; Bayes to reverse (find the cause given the effect). A <b>tree</b> or a <b>frequency table scaled to 10,000</b> both work.</div>
+</div>
+
+<div class="ex">
+<div class="h">Ex · Disease test (Bayes)</div>
+<p class="small">P(Dis)=.01, P(Pos|Dis)=.98, P(Neg|<span class="bar">Dis</span>)=.99 ⇒ P(Pos|<span class="bar">Dis</span>)=.01. Find P(Dis|Pos).</p>
+<p class="small">P(Dis|Pos)= (.98)(.01) / [(.98)(.01)+(.01)(.99)] = .0098/.0197 = <span class="ans">≈ .498</span></p>
+<p class="small muted">Table of 10,000: 98 true-pos, 99 false-pos → 98/197 = .498.</p>
+</div>
+
+<div class="block">
+<h3>Contingency (Two-Way) Tables</h3>
+<p><b>Joint</b> = one cell ÷ grand total. <b>Marginal</b> = row/col total ÷ grand total. <b>Conditional</b> = cell ÷ that row-or-column total (the "given" resets the denominator).</p>
+<table>
+<tr><th class="l"></th><th>USA</th><th>Non-US</th><th>Total</th></tr>
+<tr><th class="l">Male</th><td>22</td><td>18</td><td>40</td></tr>
+<tr><th class="l">Female</th><td>13</td><td>9</td><td>22</td></tr>
+<tr><th class="l">Total</th><td>35</td><td>27</td><td>62</td></tr>
+</table>
+<p class="small">P(Male∪Non-US)= (40+27−18)/62 = <b>49/62</b>. P(Asian|Female)= cell/row = 3/22. P(Male|not-Euro)= 35/54.</p>
+</div>
+
+<!-- ============ SECTION 2: COUNTING ============ -->
+<h2 class="sec"><span class="n">§2</span> Counting: Factorials, Permutations, Combinations</h2>
+
+<div class="block">
+<div class="f"><span class="lab">Factorial</span><span class="eq"><span class="var">x</span>! = <span class="var">x</span>(<span class="var">x</span>−1)···(2)(1)&nbsp;&nbsp;·&nbsp;&nbsp;<b>0! = 1</b></span></div>
+<div class="f key"><span class="lab">Permutations — order MATTERS</span><span class="eq"><sub>n</sub>P<sub>k</sub> = n! / (n−k)!</span></div>
+<div class="f key"><span class="lab">Combinations — order DOESN'T</span><span class="eq">C(n,k) = <span class="eq">(<sup>n</sup><sub>k</sub>)</span> = n! / [ k!(n−k)! ]</span></div>
+<ul class="small">
+<li>Order x distinct items in a row → <b>x!</b></li>
+<li>Pres/VP/Treas from 10 (order matters) → 10·9·8 = 720 = 10!/7!</li>
+<li>Committee of 3 from 8 (no order) → C(8,3) = 56</li>
+<li>Choose 2 of 5 firms, P(they're A&amp;B) = 1/C(5,2) = 1/10; P(E among 3 chosen of 5) = C(4,2)/C(5,3) = 6/10 = 3/5</li>
+</ul>
+<div class="tip"><span class="tag tp">method</span>"Arrange / rank / assign titles" → permutation. "Choose / select / committee / sample" → combination.</div>
+</div>
+
+<!-- ============ SECTION 3: RANDOM VARIABLES ============ -->
+<h2 class="sec"><span class="n">§3</span> Random Variables: PMF, E(X), Variance</h2>
+
+<div class="block">
+<h3>Definitions</h3>
+<ul>
+<li><b>Random variable (X)</b> = takes numeric values by chance. <b>Discrete</b> = countable ("counting"); <b>Continuous</b> = measured, in-between values.</li>
+<li><b>PMF / pdf:</b> p(x)=P(X=x). Requires <b>0 ≤ p(x) ≤ 1</b> and <b>Σ p(x) = 1</b>.</li>
+<li><b>CDF:</b> F(x)=P(X≤x). Then P(X&gt;x)=1−F(x); P(a≤X≤b)=F(b)−F(a−1) for integers. Get pmf from cdf by differencing.</li>
+</ul>
+</div>
+
+<div class="block">
+<h3>Expected Value &amp; Variance</h3>
+<div class="f key"><span class="lab">Mean / expected value</span><span class="eq">μ<sub>X</sub> = E(X) = Σ x·p(x)</span></div>
+<div class="f key"><span class="lab">Variance — definition</span><span class="eq">σ²<sub>X</sub> = Var(X) = Σ (x − μ)²·p(x)</span></div>
+<div class="f key"><span class="lab">Variance — shortcut (use this!)</span><span class="eq">Var(X) = Σ x²·p(x) − μ²  = E(X²) − [E(X)]²</span></div>
+<div class="f"><span class="lab">Standard deviation</span><span class="eq">σ<sub>X</sub> = √Var(X)&nbsp;&nbsp;<span class="muted">(always ≥ 0; in original units)</span></span></div>
+<div class="tip"><span class="tag tp">method</span>Build a table: columns x, p(x), x·p(x), x²·p(x). Sum col 3 → E(X). Sum col 4 → E(X²). Var = E(X²) − [E(X)]².</div>
+</div>
+
+<div class="block">
+<h3>Rules for E and Var (a, b constants)</h3>
+<div class="two">
+<div>
+<div class="f small"><span class="eq">E(a) = a</span></div>
+<div class="f small"><span class="eq">E(aX+b) = a·E(X) + b</span></div>
+<div class="f small"><span class="eq">E(X+Y) = E(X)+E(Y)</span> <span class="muted">always</span></div>
+</div>
+<div>
+<div class="f small"><span class="eq">Var(a) = 0</span></div>
+<div class="f small"><span class="eq">Var(aX+b) = a²·Var(X)</span></div>
+<div class="f small"><span class="eq">σ<sub>aX</sub> = |a|·σ<sub>X</sub></span></div>
+</div>
+</div>
+<div class="trap"><span class="tag tr">trap</span>Adding a constant <b>b shifts the mean but NOT the variance</b> (Var(X+b)=Var(X)). A multiplier <b>a comes out squared</b> in variance (a²) but plain in the mean.</div>
+<div class="tip"><span class="tag tp">method · empirical rule for RVs</span>≈⅔ of values within μ±σ; ≈95% within μ±2σ.</div>
+</div>
+
+<!-- ============ SECTION 4: COVARIANCE ============ -->
+<h2 class="sec"><span class="n">§4</span> Covariance, Correlation &amp; Sums of Random Variables</h2>
+
+<div class="block">
+<div class="f key"><span class="lab">Covariance</span><span class="eq">Cov(X,Y) = E(XY) − μ<sub>X</sub>μ<sub>Y</sub> = E[(X−μ<sub>X</sub>)(Y−μ<sub>Y</sub>)]</span></div>
+<div class="f key"><span class="lab">Correlation (−1 ≤ ρ ≤ 1)</span><span class="eq">ρ<sub>XY</sub> = Cov(X,Y) / (σ<sub>X</sub>·σ<sub>Y</sub>)&nbsp;&nbsp;⇒&nbsp;&nbsp;Cov(X,Y) = ρ<sub>XY</sub>·σ<sub>X</sub>·σ<sub>Y</sub></span></div>
+<div class="f"><span class="lab">E(XY)</span><span class="eq">E(XY) = Σ (x·y)·P(x,y)&nbsp;&nbsp;<span class="muted">sum over joint outcomes</span></span></div>
+</div>
+
+<div class="block">
+<h3>Variance of a Sum / Combination</h3>
+<div class="f key"><span class="lab">Two variables</span><span class="eq">Var(X+Y) = Var(X)+Var(Y)+2·Cov(X,Y)</span></div>
+<div class="f"><span class="lab">Difference</span><span class="eq">Var(X−Y) = Var(X)+Var(Y) − 2·Cov(X,Y)</span></div>
+<div class="f key"><span class="lab">General weighted</span><span class="eq">Var(aX+bY) = a²Var(X)+b²Var(Y)+2ab·Cov(X,Y)</span></div>
+<div class="f"><span class="lab">Scaling covariance</span><span class="eq">Cov(aX,bY) = ab·Cov(X,Y)&nbsp;&nbsp;·&nbsp;&nbsp;Cov(X,X)=Var(X)</span></div>
+<div class="tip"><span class="tag tp">independent ⇒ Cov = 0</span>Then Var(X+Y)=Var(X)+Var(Y) and Var(X−Y)=Var(X)+Var(Y) too. <b>Variances add; standard deviations do NOT</b> (σ<sub>X+Y</sub> ≠ σ<sub>X</sub>+σ<sub>Y</sub>).</div>
+</div>
+
+<div class="ex">
+<div class="h">Ex · Covariance drill</div>
+<p class="small">σ<sub>X</sub>=10, σ<sub>Y</sub>=12, σ<sub>Z</sub>=20; ρ<sub>XY</sub>=.8, ρ<sub>XZ</sub>=−.5.</p>
+<p class="small">Cov(X,Y)=.8·10·12=<b>96</b>; Cov(X,Z)=−.5·10·20=<b>−100</b>; Cov(2X,3Y)=6·96=<b>576</b>.</p>
+<p class="small">Var(X+Y)=100+144+2(96)=<span class="ans">436</span>. Var(3X+5Z)=9(100)+25(400)+2·15(−100)=<span class="ans">7900</span>.</p>
+</div>
+
+<div class="ex">
+<div class="h">Ex · Portfolio (weights sum to 1)</div>
+<p class="small">Return = w<sub>1</sub>X + w<sub>2</sub>Y. w=.4/.6, E=.12/.19, σ=.09/.28, ρ=−.4.</p>
+<p class="small">E(R)=.4(.12)+.6(.19)=<span class="ans">.162</span></p>
+<p class="small">Var=.4²(.09²)+.6²(.28²)+2(.4)(.6)(−.4)(.09)(.28)=.0247 → σ=<span class="ans">.157</span></p>
+<p class="small muted">Negative ρ lowers portfolio risk — the diversification effect.</p>
+</div>
+
+<!-- ============ SECTION 5: DISCRETE DISTRIBUTIONS ============ -->
+<h2 class="sec"><span class="n">§5</span> The Named Discrete Distributions</h2>
+
+<div class="block">
+<h3>Binomial (n, π) — fixed # of independent trials</h3>
+<p class="small"><b>Use when:</b> n fixed trials · each success/fail · constant π · independent (<b>sampling WITH replacement</b>). X = # successes = Y₁+…+Yₙ, a sum of n <b>Bernoulli</b> trials (one trial: E=π, Var=π(1−π)).</p>
+<div class="f key"><span class="eq">P(X=k) = C(n,k)·π<sup>k</sup>·(1−π)<sup>n−k</sup></span></div>
+<div class="f"><span class="eq">E(X)=nπ&nbsp;&nbsp;·&nbsp;&nbsp;Var(X)=nπ(1−π)&nbsp;&nbsp;·&nbsp;&nbsp;σ=√(nπ(1−π))</span></div>
+<p class="small"><b>"At least one"</b> = 1 − P(0) = 1 − (1−π)<sup>n</sup>. <span class="muted">Excel: =BINOM.DIST(k, n, π, FALSE) for P(X=k); TRUE for P(X≤k).</span></p>
+</div>
+<div class="ex">
+<div class="h">Ex · Salesperson, n=25 visits, π=.3</div>
+<p class="small">P(8 sales)=C(25,8)(.3)⁸(.7)¹⁷=<span class="ans">.165</span>. E=25(.3)=<b>7.5</b>; σ=√(25·.3·.7)=<b>2.29</b>.</p>
+</div>
+
+<div class="block">
+<h3>Poisson (λ) — random events over time/space</h3>
+<p class="small"><b>Use when:</b> counting events that occur one-at-a-time, independently, at a steady rate; no upper limit on x.</p>
+<div class="f key"><span class="eq">P(X=k) = e<sup>−λ</sup>·λ<sup>k</sup> / k!&nbsp;&nbsp;(k=0,1,2,…)</span></div>
+<div class="f"><span class="eq"><b>E(X) = Var(X) = λ</b>&nbsp;&nbsp;·&nbsp;&nbsp;λ = rate × duration</span></div>
+<div class="tip"><span class="tag tp">method</span>Scale λ to the window asked: 4/hr over 2 hr → λ=8; over 15 min → λ=1. "At least one" = 1 − e<sup>−λ</sup>.</div>
+</div>
+<div class="ex">
+<div class="h">Ex · Calls at 4/hr (Poisson)</div>
+<p class="small">P(5 in 2 hr): λ=8 → e⁻⁸·8⁵/5!=<span class="ans">.0916</span>. P(≥1 in 1 hr): λ=4 → 1−e⁻⁴=<span class="ans">.982</span>.</p>
+</div>
+
+<div class="block">
+<h3>Hypergeometric (N, r, n) — sampling WITHOUT replacement</h3>
+<div class="f key"><span class="eq">P(X=x) = <sup>C(r,x)·C(N−r, n−x)</sup>⁄<sub>C(N,n)</sub></span></div>
+<p class="small">N=population, r=successes in pop, n=sample, x=successes in sample. <b>Without replacement</b> (draws not independent) → hypergeometric, not binomial.</p>
+</div>
+<div class="ex">
+<div class="h">Ex · 20 marbles (12 red), draw 5, no replacement</div>
+<p class="small">P(exactly 3 red)=C(12,3)·C(8,2)/C(20,5)=<span class="ans">.397</span> <span class="muted">(with replacement → Binomial: C(5,3).6³.4²=.346).</span></p>
+</div>
+
+<div class="block">
+<h3 style="border:none;margin-bottom:2px">Which distribution? — quick selector</h3>
+<table>
+<tr><th class="l">Situation</th><th>Model</th></tr>
+<tr><td class="l">Fixed n trials, constant p, w/ replacement</td><td>Binomial</td></tr>
+<tr><td class="l">Draw without replacement from finite pop</td><td>Hypergeom.</td></tr>
+<tr><td class="l">Events per time/area, steady rate</td><td>Poisson</td></tr>
+<tr><td class="l">Sum/mean of many RVs; large n</td><td>Normal (CLT)</td></tr>
+</table>
+<div class="tip"><span class="tag tp">approx</span>Hypergeometric ≈ Binomial when n is small vs. N (pop large): P(none)≈(1−r/N)<sup>n</sup>.</div>
+</div>
+
+<!-- ============ SECTION 6: NORMAL ============ -->
+<h2 class="sec"><span class="n">§6</span> The Normal Distribution &amp; z-Scores</h2>
+
+<div class="block">
+<h3>Properties</h3>
+<ul class="small">
+<li>Continuous, <b>bell-shaped, symmetric</b> about μ. Two parameters: mean μ, variance σ².</li>
+<li>Only the <b>number of SDs from the mean</b> matters — that's what standardizing captures.</li>
+<li>Continuous ⇒ P(X=a)=0, so <b>&lt; and ≤ are interchangeable</b>.</li>
+</ul>
+<div class="f key"><span class="lab">Standardize</span><span class="eq">Z = (X − μ) / σ&nbsp;&nbsp;→&nbsp;&nbsp;Z ~ Normal(0, 1)</span></div>
+<div class="f"><span class="lab">Interval</span><span class="eq">P(a ≤ X ≤ b) = P(X≤b) − P(X≤a)</span></div>
+<div class="f"><span class="lab">"Find the value" / percentile</span><span class="eq">x = μ + z·σ&nbsp;&nbsp;<span class="muted">(z from the target tail area)</span></span></div>
+</div>
+
+<div class="block">
+<h3>Continuous RV basics</h3>
+<p class="small">Probability = <b>area under the density curve</b>; any single point has probability 0. Notation <b>X ~ N(μ, σ²)</b> (2nd parameter is the <i>variance</i>). <b>Uniform</b> on [1,5]: height = 1/(5−1) = ¼ → P(2≤X≤4)=2·¼=<b>½</b>.</p>
+</div>
+
+<div class="block">
+<h3>Reading the class z-table</h3>
+<p class="small">This course's table gives <b>A(z)=P(0≤Z≤z)</b> (area from the middle out). Convert:</p>
+<ul class="small">
+<li>P(Z≤z) = <b>0.5 + A(z)</b> &nbsp;(z&gt;0)</li>
+<li>P(Z&gt;z) = <b>0.5 − A(z)</b></li>
+<li>P(Z≤−z) = 0.5 − A(z) &nbsp;(<b>symmetry</b>)</li>
+<li>P(−a≤Z≤b) = A(a)+A(b)</li>
+</ul>
+<div class="tip"><span class="tag tp">method</span><b>Always draw the bell,</b> mark μ, shade what's asked, then translate to A(z) pieces. "Find k with P(0≤Z≤k)=.40" → read the table backwards → k≈1.28.</div>
+<p class="small muted">Some tables (&amp; Excel NORM.S.DIST) give the full cumulative Φ(z)=P(Z≤z) directly — then read it straight off, no +.5.</p>
+<div class="tip"><span class="tag tp">interpolate</span>Between rows: z ≈ z<sub>lo</sub> + [(target−A<sub>lo</sub>)/(A<sub>hi</sub>−A<sub>lo</sub>)]·(z<sub>hi</sub>−z<sub>lo</sub>). Ex: Φ=.90 lies between .8997 (1.28) &amp; .9015 (1.29) → k≈1.282.</div>
+</div>
+<div class="ex">
+<div class="h">Ex · X ~ N(100, 10²)</div>
+<p class="small">P(92&lt;X&lt;104)=P(−.8&lt;Z&lt;.4)=Φ(.4)−Φ(−.8)=.6554−.2119=<span class="ans">.4435</span></p>
+</div>
+
+<div class="ex">
+<div class="h">Ex · Coke demand ~ N(150, 20)</div>
+<p class="small">P(X≤200): z=(200−150)/20=2.5 → .5+.4938=<span class="ans">.9938</span></p>
+<p class="small">P(X≥180): z=1.5 → .5−.4332=<span class="ans">.0668</span></p>
+<p class="small">Stock so P(run out)=.1: z=1.28 → 150+1.28(20)=175.6 → stock <span class="ans">176</span>.</p>
+</div>
+
+<!-- ============ SECTION 7: CLT ============ -->
+<h2 class="sec"><span class="n">§7</span> Sampling Distributions &amp; the Central Limit Theorem</h2>
+
+<div class="block">
+<p><b>CLT:</b> the <b>sum</b> (or <b>average</b>) of many independent, identically-distributed RVs is <b>≈ Normal</b> — <i>even when the underlying variable is not normal.</i> Conditions: iid + independent + large n (<b>rule of thumb n ≥ 30</b>).</p>
+<div class="two">
+<div class="f key"><span class="lab">SUM of n</span><span class="eq">mean = nμ<br>SD = σ√n<br>Z = (T − nμ)/(σ√n)</span></div>
+<div class="f key"><span class="lab">AVERAGE of n (<span class="bar">X</span>)</span><span class="eq">mean = μ<br>SE = σ/√n<br>Z = (<span class="bar">X</span> − μ)/(σ/√n)</span></div>
+</div>
+<div class="trap"><span class="tag tr">trap</span><b>Sum vs. average.</b> Sum spreads out (σ√n); the average tightens (σ/√n). Pick the right one and don't mix variances with SDs.</div>
+</div>
+
+<div class="block">
+<h3>Two special cases</h3>
+<ul class="small">
+<li><b>Underlying is Normal</b> → the sum/average is <b>exactly</b> Normal for <i>any</i> n (not an approximation).</li>
+<li><b>Normal ≈ Binomial:</b> valid when <b>nπ &gt; 5 and n(1−π) &gt; 5</b>; then X ≈ Normal with mean nπ, variance nπ(1−π).</li>
+</ul>
+<div class="trap"><span class="tag tr">the classic exam trap</span>"n&gt;30 ⇒ an <b>individual</b> observation is normal" is <b>FALSE.</b> The CLT normalizes the <b>sample mean/sum</b> only. A single item keeps the population's shape no matter how big n is.</div>
+</div>
+
+<div class="ex">
+<div class="h">Ex · Cars sold/day: E=1.7, Var=.81 (SUM)</div>
+<p class="small">300 days: sum mean=300(1.7)=510, SD=√(300·.81)=15.59.</p>
+<p class="small">P(fewer than 495)= z=(495−510)/15.59=−.96 → <span class="ans">≈ .17</span></p>
+</div>
+<div class="ex">
+<div class="h">Ex · Branch employees μ=50, σ=15 (AVERAGE)</div>
+<p class="small">n=40: SE=15/√40=2.37 → z=(55−50)/2.37=2.11 → P(<span class="bar">X</span>&gt;55)=<span class="ans">.017</span></p>
+<p class="small">n=100: SE=15/√100=1.5 → z=3.33 → P(<span class="bar">X</span>&gt;55)=<span class="ans">.0004</span></p>
+<p class="small muted">Bigger n → smaller SE → tighter around μ. Assumes iid, n large.</p>
+</div>
+
+<!-- ============ SECTION 8: DESCRIPTIVE ============ -->
+<h2 class="sec"><span class="n">§8</span> Descriptive Statistics &amp; Data (Class 01)</h2>
+
+<div class="block">
+<h3>Data &amp; sampling vocabulary</h3>
+<ul class="small">
+<li><b>Quantitative</b> (numbers/arithmetic) vs <b>Qualitative</b> (categories). <b>Discrete</b> (count) vs <b>Continuous</b> (measure).</li>
+<li><b>Nominal</b> (no order) vs <b>Ordinal</b> (ordered, e.g. Likert). <b>Cross-sectional</b> vs <b>Time series</b>. <b>Univariate</b> vs <b>Multivariate</b>.</li>
+<li><b>Random sample:</b> every element equally likely to be chosen.</li>
+</ul>
+<div class="trap"><span class="tag tr">key idea</span><b>Parameter</b> = summary of the <b>population</b> (FIXED). <b>Statistic</b> = summary of the <b>sample</b> (RANDOM). Populations are fixed; statistics vary sample-to-sample.</div>
+</div>
+
+<div class="block">
+<h3>Center &amp; spread</h3>
+<div class="two">
+<div class="f small"><span class="lab">Sample / pop mean</span><span class="eq"><span class="bar">x</span>=Σx/n&nbsp;·&nbsp;μ=Σx/N</span></div>
+<div class="f small"><span class="lab">Median</span><span class="eq">middle; even n→avg of 2</span></div>
+</div>
+<div class="f"><span class="lab">Population variance</span><span class="eq">σ² = Σ(x−μ)²/N = (Σx² − Nμ²)/N</span></div>
+<div class="f key"><span class="lab">Sample variance — divide by n−1</span><span class="eq">s² = Σ(x−<span class="bar">x</span>)²/(n−1) = (Σx² − n<span class="bar">x</span>²)/(n−1)</span></div>
+<div class="tip"><span class="tag tp">why n−1?</span>So s² is an <b>unbiased estimator</b> of σ². Population σ² uses N and μ; sample s² uses n−1 and <span class="bar">x</span>. Mixing these up is the classic error.</div>
+</div>
+
+<div class="block">
+<h3>z-scores, quartiles &amp; outliers</h3>
+<div class="f small"><span class="eq">z=(x−μ)/σ&nbsp;or&nbsp;(x−<span class="bar">x</span>)/s</span></div>
+<ul class="small">
+<li><b>Outlier by z:</b> |z|≥3 outlier; 2≤|z|&lt;3 possible outlier.</li>
+<li><b>Empirical rule</b> (bell-shaped): 68% within μ±σ, 95% within μ±2σ, 99% within μ±3σ.</li>
+<li><b>Quartiles:</b> Q1 at position (n+1)/4; Q3 at 3(n+1)/4; <b>IQR=Q3−Q1</b>.</li>
+<li><b>Box-plot fences:</b> inner = Q1−1.5·IQR &amp; Q3+1.5·IQR (→ outlier); outer = ±3·IQR (→ serious outlier).</li>
+</ul>
+<div class="tip"><span class="tag tp">robustness</span><b>Sensitive to outliers:</b> mean, range, s/σ. <b>Resistant:</b> median, IQR. Bar chart = qualitative (gaps); histogram = quantitative (no gaps).</div>
+</div>
+
+<div class="ex">
+<div class="h">Ex · Box plot {30,40,70,81,90,118,123}</div>
+<p class="small">Q1=70, median=81, Q3=90 → IQR=20. Fences: 70−1.5(20)=<b>40</b> &amp; 90+1.5(20)=<b>120</b>. Points outside → <span class="ans">outliers: 30 &amp; 123</span>; whiskers reach 40 &amp; 118.</p>
+</div>
+
+<div class="ex">
+<div class="h">Ex · Mean vs. median (n=9 compensations)</div>
+<p class="small">86.24, 88.77, 88.95, 94.62, <b>95.42</b>, 95.60, 95.64, 97.18, 99.80 → median = middle = <b>95.42</b>; mean = 93.58 (pulled down by the low value — mean &lt; median here).</p>
+</div>
+
+<!-- ============ SECTION 9: SAMPLE MIDTERM ============ -->
+<h2 class="sec"><span class="n">§9</span> The Sample Midterm — Fully Worked</h2>
+
+<div class="block" style="break-inside:avoid">
+<p class="small"><b>The game:</b> Roll a fair die. <b>5 or 6</b> → Jar 1 (15 red, 5 green). <b>1–4</b> → Jar 2 (8 red, 12 green). So P(5,6)=2/6=⅓, P(1–4)=4/6=⅔; P(G|Jar1)=5/20=.25, P(G|Jar2)=12/20=.6.</p>
+</div>
+
+<div class="ex">
+<div class="h">P1 · P(green ball) — total probability</div>
+<p class="small">P(G)=P(G|Jar1)P(5,6)+P(G|Jar2)P(1–4) = .25(⅓)+.6(⅔) = .0833+.40 = <span class="ans">.4833</span></p>
+</div>
+<div class="ex">
+<div class="h">P2 · P(rolled 5–6 | green) — Bayes</div>
+<p class="small">= P(G|5,6)P(5,6) / P(G) = .0833 / .4833 = <span class="ans">.1724</span></p>
+</div>
+<div class="ex">
+<div class="h">P3 · P(rolled 1–4 ∪ green)</div>
+<p class="small">= P(1–4)+P(G)−P(1–4∩G) = .6667+.4833−(.6·.6667) = .6667+.4833−.40 = <span class="ans">.75</span></p>
+</div>
+
+<div class="ex">
+<div class="h">P4 · Distribution of total profit Z=X+Y</div>
+<p class="small">Die X: $2 if 5–6, $5 if 1–4. Ball Y: $4 red, $3 green.</p>
+<table class="small">
+<tr><th class="l">Outcome</th><th>Z</th><th>P(Z)</th></tr>
+<tr><td class="l">5,6 &amp; Green</td><td>5</td><td>⅓·.25=.0833</td></tr>
+<tr><td class="l">5,6 &amp; Red</td><td>6</td><td>⅓·.75=.25</td></tr>
+<tr><td class="l">1–4 &amp; Green</td><td>8</td><td>⅔·.6=.40</td></tr>
+<tr><td class="l">1–4 &amp; Red</td><td>9</td><td>⅔·.4=.2667</td></tr>
+</table>
+</div>
+<div class="ex">
+<div class="h">P5 · E(Z) and σ<sub>Z</sub></div>
+<p class="small">E(Z)=5(.0833)+6(.25)+8(.40)+9(.2667)=<span class="ans">7.517</span></p>
+<p class="small">E(Z²)=25(.0833)+36(.25)+64(.40)+81(.2667)=58.283</p>
+<p class="small">Var=58.283−7.517²=1.783 → σ<sub>Z</sub>=<span class="ans">1.335</span></p>
+</div>
+<div class="ex">
+<div class="h">P6 · E(XY)</div>
+<p class="small">=Σ(X·Y)P = 6(.0833)+8(.25)+15(.40)+20(.2667) = .5+2+6+5.333 = <span class="ans">13.833</span></p>
+</div>
+
+<div class="ex">
+<div class="h">P7 · Win $9 ≥ 25× in 100 plays — Binomial ≈ Normal</div>
+<p class="small">"Win $9" = roll 1–4 &amp; red, p=.2667. n=100: mean=np=26.67, σ=√(np(1−p))=4.42.</p>
+<p class="small">Check nπ,n(1−π)&gt;5 ✓. z=(24.5−26.67)/4.42=−.49 → P(X≥25)=P(Z&gt;−.49)≈<span class="ans">.69</span> <span class="muted">(½ continuity correction)</span></p>
+</div>
+<div class="ex">
+<div class="h">P8 · Var(2X) vs Var(X+Y) · Var=49 each, indep.</div>
+<p class="small">Var(2X)=2²·49=<b>196</b>. Var(X+Y)=49+49=<b>98</b> (Cov=0). → <span class="ans">Var(2X) &gt; Var(X+Y)</span></p>
+</div>
+<div class="ex">
+<div class="h">P9 · Independent? P(A)=.5, P(B)=.3, P((A∪B)ᶜ)=.42</div>
+<p class="small">If independent: P(A∩B)=.15 → P(A∪B)=.65 → P((A∪B)ᶜ)=.35. Given .42 ≠ .35 → <span class="ans">NOT independent</span>.</p>
+</div>
+
+<div class="ex">
+<div class="h">P10 · Corn chips: μ=11.95, σ=.22, n=100</div>
+<p class="small"><b>(a) P(total &gt; 1194):</b> sum mean=100(11.95)=1195, SD=√100(.22)=2.2. z=(1194−1195)/2.2=−.4545 → P(Z&gt;−.45)=<span class="ans">.675</span></p>
+<p class="small"><b>(b) P(<span class="bar">x</span> &lt; 11.97):</b> SE=.22/√100=.022. z=(11.97−11.95)/.022=.909 → <span class="ans">.818</span></p>
+<p class="small"><b>(c)</b> "n&gt;30 ⇒ individual bag is normal"? <span class="ans">No.</span> CLT normalizes the sample <b>mean/sum</b>, not an individual bag — it keeps the population shape for any n.</p>
+</div>
+
+<h3 class="subsec">More Practice · HW2 &amp; Notes Problem Types</h3>
+
+<div class="ex">
+<div class="h">Overbooking · expected value of a binomial function</div>
+<p class="small">40 rooms, 50 reservations, P(show)=.8 → X~Bin(50,.8). Pay $150 per guest bumped (x&gt;40).</p>
+<p class="small">E[comp] = 150·Σ<sub>x=41..50</sub>(x−40)·P(X=x) = 150(1.119) = <span class="ans">$167.78</span></p>
+</div>
+<div class="ex">
+<div class="h">Poisson · "at least 3"</div>
+<p class="small">λ=2 in the window: P(X≥3)=1−[P(0)+P(1)+P(2)] = 1−e⁻²(1+2+2) = 1−.677 = <span class="ans">.323</span></p>
+</div>
+<div class="ex">
+<div class="h">Acceptance sampling · Hypergeometric</div>
+<p class="small">Ship N=200, inspect 12, reject if <b>any</b> defective. With 10 defective: P(reject)=1−C(190,12)/C(200,12)=<span class="ans">.469</span> <span class="muted">(binomial approx 1−(1−10/200)¹²=.460).</span></p>
+</div>
+<div class="ex">
+<div class="h">Two-stage Bayes · coin picks a jar</div>
+<p class="small">Jar A 7R/3G, Jar B 15R/30G; fair coin (H→A, T→B). P(red)=.5(.7)+.5(⅓)=<span class="ans">.517</span>. P(tails|green)=[.5(⅔)]/[.5(.3)+.5(⅔)]=<span class="ans">.690</span></p>
+</div>
+<div class="ex">
+<div class="h">Standardize to compare across classes</div>
+<p class="small">Physics 76 (μ70,σ5)→z=1.2; History 81 (80,3)→.33; Stats 78 (75,4)→.75. Highest z ⇒ <span class="ans">Physics is best</span> relative to its class.</p>
+</div>
+
+<!-- ============ QUICK REFERENCE ============ -->
+<h2 class="sec"><span class="n">§10</span> One-Glance Reference: Formulas, z-Table &amp; Traps</h2>
+
+<div class="block">
+<h3>Master formula sheet</h3>
+<table class="small">
+<tr><th class="l">Quantity</th><th class="l">Formula</th></tr>
+<tr><td class="l">Union</td><td class="l">P(A∪B)=P(A)+P(B)−P(A∩B)</td></tr>
+<tr><td class="l">Conditional</td><td class="l">P(A|B)=P(A∩B)/P(B)</td></tr>
+<tr><td class="l">Independent</td><td class="l">P(A∩B)=P(A)P(B)</td></tr>
+<tr><td class="l">Bayes</td><td class="l">P(B|A)=P(A|B)P(B)/P(A)</td></tr>
+<tr><td class="l">Combinations</td><td class="l">C(n,k)=n!/[k!(n−k)!]</td></tr>
+<tr><td class="l">E(X)</td><td class="l">Σ x·p(x)</td></tr>
+<tr><td class="l">Var(X)</td><td class="l">Σx²p(x) − μ²</td></tr>
+<tr><td class="l">Var(aX+b)</td><td class="l">a²·Var(X)</td></tr>
+<tr><td class="l">Cov(X,Y)</td><td class="l">E(XY)−μ<sub>X</sub>μ<sub>Y</sub> = ρσ<sub>X</sub>σ<sub>Y</sub></td></tr>
+<tr><td class="l">Var(aX+bY)</td><td class="l">a²V(X)+b²V(Y)+2ab·Cov</td></tr>
+<tr><td class="l">Binomial</td><td class="l">C(n,k)π<sup>k</sup>(1−π)<sup>n−k</sup>; μ=nπ, σ²=nπ(1−π)</td></tr>
+<tr><td class="l">Poisson</td><td class="l">e<sup>−λ</sup>λ<sup>k</sup>/k!; μ=σ²=λ</td></tr>
+<tr><td class="l">Hypergeom.</td><td class="l">C(r,x)C(N−r,n−x)/C(N,n)</td></tr>
+<tr><td class="l">Standardize</td><td class="l">z=(x−μ)/σ</td></tr>
+<tr><td class="l">Sum of n</td><td class="l">mean nμ, SD σ√n</td></tr>
+<tr><td class="l">Average of n</td><td class="l">mean μ, SE σ/√n</td></tr>
+<tr><td class="l">Sample var</td><td class="l">s²=Σ(x−<span class="bar">x</span>)²/(n−1)</td></tr>
+</table>
+</div>
+
+<div class="block">
+<h3>Standard normal — A(z)=P(0≤Z≤z)</h3>
+<table class="zt">
+<tr><th>z</th><th>A(z)</th><th>z</th><th>A(z)</th><th>z</th><th>A(z)</th></tr>
+<tr><td>0.25</td><td>.0987</td><td>1.00</td><td>.3413</td><td>1.75</td><td>.4599</td></tr>
+<tr><td>0.50</td><td>.1915</td><td>1.15</td><td>.3749</td><td>1.96</td><td>.4750</td></tr>
+<tr><td>0.67</td><td>.2486</td><td>1.28</td><td>.3997</td><td>2.00</td><td>.4772</td></tr>
+<tr><td>0.75</td><td>.2734</td><td>1.33</td><td>.4082</td><td>2.33</td><td>.4901</td></tr>
+<tr><td>0.84</td><td>.2995</td><td>1.50</td><td>.4332</td><td>2.50</td><td>.4938</td></tr>
+<tr><td>0.90</td><td>.3159</td><td>1.645</td><td>.4500</td><td>3.00</td><td>.4987</td></tr>
+</table>
+<p class="small"><b>Key criticals:</b> z=1.28→.40 (90th pct) · 1.645→.45 (95th) · 1.96→.475 (97.5th) · 2.33→.49 (99th). P(Z≤z)=.5+A(z).</p>
+</div>
+
+<div class="block">
+<h3>Excel functions</h3>
+<ul class="small">
+<li><b>=BINOM.DIST(k,n,p,FALSE/TRUE)</b> — binomial P(X=k) / P(X≤k)</li>
+<li><b>=POISSON.DIST(k,λ,FALSE/TRUE)</b></li>
+<li><b>=NORM.S.DIST(z,TRUE)</b> — Φ(z)=P(Z≤z) (full cumulative)</li>
+<li><b>=NORM.DIST(x,μ,σ,TRUE)</b> · <b>=COMBIN(n,k)</b> · <b>=FACT(n)</b></li>
+</ul>
+</div>
+
+<div class="block">
+<h3>Top exam traps &amp; final checklist</h3>
+<ul class="small">
+<li><b>Variances add, SDs don't.</b> Never add standard deviations.</li>
+<li><b>Var(aX)=a²Var(X)</b> — square the constant; +b does nothing to variance.</li>
+<li><b>Independent ⇒ Cov=0</b>; if a ρ or Cov is given, you MUST include 2·Cov.</li>
+<li><b>With replacement→Binomial; without→Hypergeometric.</b></li>
+<li><b>Poisson λ = rate × the exact time window</b> asked.</li>
+<li><b>CLT: sum uses σ√n, average uses σ/√n</b> — and it never makes an <i>individual</i> value normal.</li>
+<li><b>Sample s² divides by n−1</b>; population σ² divides by N.</li>
+<li><b>This class' z-table is "0→z"</b> — add .5 for a full left tail; use symmetry for negatives.</li>
+<li><b>Always draw the bell &amp; shade</b> before computing a normal probability.</li>
+<li><b>"At least one" = 1 − P(none).</b></li>
+</ul>
+</div>
+
+<div class="footer">
+<span><b>Statistics &amp; Data Analysis</b> · Midterm Cheat Sheet · Prof. Giloni · Summer 2026</span>
+<span>Covers Classes 01–04 + notes, HW2 &amp; Sample-Midterm keys · Good luck! 🎯</span>
+</div>
+
+</div><!-- /cols -->
+</div><!-- /page -->
