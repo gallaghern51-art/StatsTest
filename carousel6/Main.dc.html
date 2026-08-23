@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+  <style>
+    body { margin:0; background:#f2efe9; color:#191814;
+           font-family:"IBM Plex Sans","Helvetica Neue",Helvetica,sans-serif;
+           -webkit-font-smoothing:antialiased; }
+    a { color:#c4491c; } a:hover { color:#8f3413; }
+    svg text { font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace; }
+  </style>
+</helmet>
+
+<div style="box-sizing:border-box; width:1120px; height:1150px; padding:44px 48px 36px; background:#f2efe9; display:flex; flex-direction:column; gap:26px;">
+
+  <!-- ── header ─────────────────────────────────────────── -->
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom:2px solid #191814; padding-bottom:14px;">
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#c4491c; margin-bottom:10px;">PLATE 01 — GENERAL ARRANGEMENT</div>
+      <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:62px; line-height:0.92; letter-spacing:-0.02em;">CAROUSEL 4</div>
+    </div>
+    <div style="text-align:right; font-family:'IBM Plex Mono',monospace; font-size:11px; line-height:1.75; color:#55514a;">
+      FOUR-STATION ROTARY POD CHANGER<br>
+      HOST DEVICE — VOLCANO HYBRID<br>
+      REV A · CONCEPT ONLY
+    </div>
+  </div>
+
+  <!-- ── intro + figures ────────────────────────────────── -->
+  <div style="display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:44px; align-items:start;">
+    <p style="margin:0; font-size:15px; line-height:1.62; color:#2e2b26; text-wrap:pretty;">
+      A pod magazine that replaces the Volcano's filling chamber. Four sealed pods are loaded
+      away from the machine, dropped into a rotating disc, and indexed one at a time over the
+      heater outlet by a small geared motor. Each pod carries its own dose, so a session is set up once and stepped
+      through by hand — no reloading a hot chamber between bags, and no guessing at grind
+      weight while the unit is at temperature.
+    </p>
+    <div style="display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:2px; background:#d9d4c7; border:1px solid #d9d4c7;">
+      <div style="background:#fbf9f5; padding:12px 14px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.13em; color:#7a756a;">STATIONS</div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:25px; margin-top:3px;">4</div></div>
+      <div style="background:#fbf9f5; padding:12px 14px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.13em; color:#7a756a;">DOSE PER POD</div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:25px; margin-top:3px;">0.15–0.65 g</div></div>
+      <div style="background:#fbf9f5; padding:12px 14px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.13em; color:#7a756a;">ENVELOPE</div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:25px; margin-top:3px;">Ø120 × 78</div></div>
+      <div style="background:#fbf9f5; padding:12px 14px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.13em; color:#7a756a;">POWER</div><div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:25px; margin-top:3px;">USB-C 5 V</div></div>
+    </div>
+  </div>
+
+  <!-- ── elevation ──────────────────────────────────────── -->
+  <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:8px 0 0;">
+  <svg viewBox="30 100 630 370" width="100%" style="display:block;" aria-label="Front elevation of the Carousel 6 fitted to a Volcano Hybrid">
+    <defs>
+      <pattern id="hatchHot" width="4" height="4" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="4" stroke="#c4491c" stroke-width="0.7"/>
+      </pattern>
+      <pattern id="knurl" width="3" height="12" patternUnits="userSpaceOnUse">
+        <line x1="1" y1="0" x2="1" y2="12" stroke="#8f8a7d" stroke-width="0.6"/>
+      </pattern>
+    </defs>
+
+    <!-- bench line -->
+    <line x1="170" y1="420" x2="430" y2="420" stroke="#c9c4b6" stroke-width="1"/>
+
+    <!-- ══ VOLCANO HYBRID (host, unmodified) ══ -->
+    <g stroke="#3d3a32" stroke-width="1.1" fill="#e6e2d8" stroke-linejoin="round">
+      <path d="M 200,420 L 200,404 C 201,392 206,364 214,340 C 225,308 242,272 256,250 C 262,240 266,230 267,220
+               L 333,220 C 334,230 338,240 344,250 C 358,272 375,308 386,340 C 394,364 399,392 400,404 L 400,420 Z"/>
+      <rect x="196" y="403" width="208" height="17" rx="2.5" fill="#dcd7cb"/>
+    </g>
+    <!-- control panel -->
+    <rect x="262" y="300" width="76" height="52" rx="4" fill="#2a2823" stroke="#191814" stroke-width="0.9"/>
+    <rect x="271" y="307" width="58" height="19" rx="2" fill="#43403a"/>
+    <text x="300" y="320.5" text-anchor="middle" font-size="9" fill="#e8a06a" letter-spacing="1">185 °C</text>
+    <circle cx="281" cy="340" r="7" fill="#4a4740" stroke="#191814" stroke-width="0.8"/>
+    <circle cx="319" cy="340" r="7" fill="#4a4740" stroke="#191814" stroke-width="0.8"/>
+    <!-- intake slots -->
+    <g stroke="#a8a396" stroke-width="1">
+      <line x1="228" y1="386" x2="252" y2="386"/><line x1="226" y1="393" x2="254" y2="393"/>
+      <line x1="348" y1="386" x2="372" y2="386"/><line x1="346" y1="393" x2="374" y2="393"/>
+    </g>
+
+    <!-- ══ CAROUSEL 4 ══ -->
+    <!-- bayonet collar -->
+    <path d="M 272,220 L 272,208 L 328,208 L 328,220 Z" fill="#cfcabd" stroke="#3d3a32" stroke-width="1.1"/>
+    <!-- lower deck -->
+    <rect x="244" y="194" width="112" height="14" rx="1.5" fill="#dcd8cc" stroke="#3d3a32" stroke-width="1.1"/>
+    <!-- index ring, knurled -->
+    <rect x="240" y="182" width="120" height="12" fill="#d3cec1" stroke="#3d3a32" stroke-width="1.1"/>
+    <rect x="242" y="184" width="116" height="8" fill="url(#knurl)" opacity="0.8"/>
+    <!-- open station pocket at left station -->
+    <path d="M 250,182 L 250,177 L 286,177 L 286,182" fill="none" stroke="#3d3a32" stroke-width="0.9"/>
+    <!-- upper deck -->
+    <rect x="246" y="172" width="108" height="10" rx="1.5" fill="#e2ded3" stroke="#3d3a32" stroke-width="1.1"/>
+    <rect x="252" y="160" width="26" height="12" rx="2" fill="#cfcabd" stroke="#3d3a32" stroke-width="1.1"/>
+    <circle cx="265" cy="166" r="2.4" fill="#2d6480"/>
+    <!-- clamp + vapour plenum -->
+    <rect x="282" y="162" width="36" height="10" rx="1.5" fill="#cfcabd" stroke="#3d3a32" stroke-width="1.1"/>
+    <!-- valve stub -->
+    <rect x="290" y="146" width="20" height="16" fill="#dcd8cc" stroke="#3d3a32" stroke-width="1.1"/>
+    <rect x="284" y="141" width="32" height="5" rx="1" fill="#cfcabd" stroke="#3d3a32" stroke-width="1.1"/>
+
+    <!-- pod being dropped into the left station -->
+    <g>
+      <rect x="250" y="149" width="36" height="3" rx="0.8" fill="#c4491c" stroke="#8f3413" stroke-width="0.8"/>
+      <rect x="252" y="152" width="32" height="13" rx="1" fill="#e0dcd1" stroke="#3d3a32" stroke-width="1"/>
+      <line x1="268" y1="167" x2="268" y2="176" stroke="#c4491c" stroke-width="1" stroke-dasharray="2.5 2.5"/>
+      <path d="M 265,173 L 268,177 L 271,173" fill="none" stroke="#c4491c" stroke-width="1.1"/>
+    </g>
+
+    <!-- ══ callouts ══ -->
+    <g font-size="7.2" fill="#2e2b26">
+      <!-- right -->
+      <g stroke="#8a857a" stroke-width="0.7" fill="none">
+        <path d="M 310,148 L 420,114 L 452,114"/><path d="M 318,167 L 420,154 L 452,154"/>
+        <path d="M 352,177 L 420,180 L 452,180"/><path d="M 358,188 L 420,210 L 452,210"/>
+        <path d="M 354,201 L 420,240 L 452,240"/><path d="M 326,214 L 420,270 L 452,270"/>
+      </g>
+      <g fill="#c4491c"><circle cx="310" cy="148" r="1.5"/><circle cx="318" cy="167" r="1.5"/><circle cx="352" cy="177" r="1.5"/><circle cx="358" cy="188" r="1.5"/><circle cx="354" cy="201" r="1.5"/><circle cx="326" cy="214" r="1.5"/></g>
+      <text x="456" y="112">VALVE STUB</text><text x="456" y="121.5" fill="#7a756a">stock balloon or whip</text>
+      <text x="456" y="152">RETRACTABLE CLAMP + PLENUM</text><text x="456" y="161.5" fill="#7a756a">seals the active pod only</text>
+      <text x="456" y="178">UPPER DECK — DRIVE + CONTROL</text><text x="456" y="187.5" fill="#7a756a">motor, sensors, station LEDs</text>
+      <text x="456" y="208">DRIVE RING — crown teeth</text><text x="456" y="217.5" fill="#7a756a">motor-indexed, 4 stations</text>
+      <text x="456" y="238">LOWER DECK</text><text x="456" y="247.5" fill="#7a756a">plenum + floating nozzle</text>
+      <text x="456" y="268">BAYONET COLLAR</text><text x="456" y="277.5" fill="#7a756a">into stock chamber housing</text>
+
+      <!-- left -->
+      <g stroke="#8a857a" stroke-width="0.7" fill="none">
+        <path d="M 252,163 L 196,132 L 172,132"/><path d="M 244,188 L 196,196 L 172,196"/>
+        <path d="M 256,266 L 196,290 L 172,290"/>
+      </g>
+      <g fill="#c4491c"><circle cx="252" cy="163" r="1.5"/><circle cx="244" cy="188" r="1.5"/><circle cx="256" cy="266" r="1.5"/></g>
+      <text x="168" y="130" text-anchor="end">DRIVE POD — MOTOR + PINION</text><text x="168" y="139.5" text-anchor="end" fill="#7a756a">lays flat; no added height</text>
+      <text x="168" y="194" text-anchor="end">4 STATIONS ON Ø64 PITCH CIRCLE</text><text x="168" y="203.5" text-anchor="end" fill="#7a756a">rotating disc, Ø108</text>
+      <text x="168" y="288" text-anchor="end">VOLCANO HYBRID — UNMODIFIED</text><text x="168" y="297.5" text-anchor="end" fill="#7a756a">reversible chamber swap</text>
+    </g>
+
+    <!-- ══ dimensions ══ -->
+    <g stroke="#55514a" stroke-width="0.7" fill="none">
+      <line x1="624" y1="141" x2="624" y2="420"/>
+      <path d="M 621,145 L 624,141 L 627,145"/><path d="M 621,416 L 624,420 L 627,416"/>
+      <line x1="404" y1="141" x2="628" y2="141" stroke-dasharray="2 3" stroke-width="0.5"/>
+      <line x1="404" y1="420" x2="628" y2="420" stroke-dasharray="2 3" stroke-width="0.5"/>
+      <line x1="600" y1="141" x2="600" y2="220"/>
+      <path d="M 597,145 L 600,141 L 603,145"/><path d="M 597,216 L 600,220 L 603,216"/>
+      <line x1="404" y1="220" x2="604" y2="220" stroke-dasharray="2 3" stroke-width="0.5"/>
+    </g>
+    <text x="630" y="285" font-size="7.5" fill="#55514a" transform="rotate(-90 630 285)" text-anchor="middle">278 OVERALL</text>
+    <text x="596" y="182" font-size="7.5" fill="#c4491c" transform="rotate(-90 596 182)" text-anchor="middle">78 ADDED</text>
+
+    <!-- scale bar -->
+    <g>
+      <line x1="250" y1="440" x2="350" y2="440" stroke="#55514a" stroke-width="1"/>
+      <line x1="350" y1="436" x2="350" y2="444" stroke="#55514a" stroke-width="1"/>
+      <line x1="300" y1="437" x2="300" y2="443" stroke="#55514a" stroke-width="1"/>
+      <line x1="350" y1="436" x2="350" y2="444" stroke="#55514a" stroke-width="1"/>
+      <text x="250" y="455" font-size="7" fill="#55514a">0</text>
+      <text x="350" y="455" font-size="7" fill="#55514a" text-anchor="middle">100 mm</text>
+    </g>
+  </svg>
+  </div>
+
+  <!-- ── legend ─────────────────────────────────────────── -->
+  <div style="display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:28px; padding:2px 2px 0;">
+    <div style="display:flex; gap:11px; align-items:flex-start;">
+      <svg width="34" height="14" style="flex-shrink:0; margin-top:2px;"><path d="M 1,7 L 26,7" stroke="#c4491c" stroke-width="2.2"/><path d="M 24,3 L 31,7 L 24,11 Z" fill="#c4491c"/></svg>
+      <div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em;">HOT AIR IN</div><div style="font-size:12.5px; color:#55514a; line-height:1.45; margin-top:2px;">Heater outlet to the active pod. Clean air only — never sees vapour.</div></div>
+    </div>
+    <div style="display:flex; gap:11px; align-items:flex-start;">
+      <svg width="34" height="14" style="flex-shrink:0; margin-top:2px;"><path d="M 1,7 L 26,7" stroke="#2d6480" stroke-width="2.2"/><path d="M 24,3 L 31,7 L 24,11 Z" fill="#2d6480"/></svg>
+      <div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em;">VAPOUR OUT</div><div style="font-size:12.5px; color:#55514a; line-height:1.45; margin-top:2px;">Pod to plenum to valve stub. Short, straight, and lifts off for cleaning.</div></div>
+    </div>
+    <div style="display:flex; gap:11px; align-items:flex-start;">
+      <svg width="34" height="14" style="flex-shrink:0; margin-top:2px;"><rect x="1" y="2" width="30" height="10" fill="#e2ddd1" stroke="#3d3a32" stroke-width="1"/></svg>
+      <div><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em;">HOST DEVICE</div><div style="font-size:12.5px; color:#55514a; line-height:1.45; margin-top:2px;">Stock Volcano Hybrid. The carousel is a chamber swap — fully reversible.</div></div>
+    </div>
+  </div>
+
+  <!-- ── title block ────────────────────────────────────── -->
+  <div style="display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:1px; background:#191814; border:1px solid #191814; font-family:'IBM Plex Mono',monospace;">
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">PLATE</div><div style="font-size:12px; margin-top:3px;">01 OF 08</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">UNITS</div><div style="font-size:12px; margin-top:3px;">mm</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">SCALE</div><div style="font-size:12px; margin-top:3px;">1:1.6 @ 1120px</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">REV</div><div style="font-size:12px; margin-top:3px;">A</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#c4491c; letter-spacing:0.12em;">STATUS</div><div style="font-size:12px; margin-top:3px; color:#c4491c;">NOT FOR MANUFACTURE</div></div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

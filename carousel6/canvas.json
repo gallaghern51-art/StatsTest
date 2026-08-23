@@ -1,0 +1,19 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html",     "x": 0,    "y": 0,    "w": 1120, "h": 1150, "title": "01 · General arrangement" },
+    { "file": "Section.dc.html",  "x": 1240, "y": 0,    "w": 1120, "h": 1168, "title": "02 · Section A–A" },
+    { "file": "Carousel.dc.html", "x": 2480, "y": 0,    "w": 1120, "h": 1164, "title": "03 · Plan, drive & indexing" },
+    { "file": "Pod.dc.html",      "x": 0,    "y": 1330, "w": 1120, "h": 1126, "title": "04 · The pod" },
+    { "file": "Mount.dc.html",    "x": 1240, "y": 1330, "w": 1120, "h": 1186, "title": "05 · Mount & attachment" },
+    { "file": "Exploded.dc.html", "x": 2480, "y": 1330, "w": 900,  "h": 1290, "title": "06 · Exploded assembly" },
+    { "file": "Notes.dc.html",    "x": 0,    "y": 2790, "w": 1120, "h": 1184, "title": "07 · Risk register" },
+    { "file": "Route.dc.html",    "x": 1240, "y": 2790, "w": 1000, "h": 980,  "title": "08 · Build route" }
+  ],
+  "annotations": [
+    { "id": "brief", "x": -330, "y": 40, "w": 280,
+      "text": "CAROUSEL 4 — rev B\n\nFour stations, motor-driven, pods sized to the Volcano's own Ø30 screen so the deepest setting holds a complete stock bowl.\n\nHost figures came from retailer and support listings — the manufacturer's own pages would not load from this machine. Every interface dimension still has to be measured off a real device before anything gets cut." },
+    { "id": "route-note", "x": 2380, "y": 2840, "w": 260,
+      "text": "Start here if you want something on the bench soonest. Route B needs one reducer sleeve and no custom pods — the disc, cam, seals and drive are identical either way." }
+  ],
+  "launch": { "view": "canvas" }
+}

@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+  <style>
+    body { margin:0; background:#f2efe9; color:#191814;
+           font-family:"IBM Plex Sans","Helvetica Neue",Helvetica,sans-serif;
+           -webkit-font-smoothing:antialiased; }
+    a { color:#c4491c; } a:hover { color:#8f3413; }
+    svg text { font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace; }
+  </style>
+</helmet>
+
+<div style="box-sizing:border-box; width:1120px; height:1168px; padding:44px 48px 36px; background:#f2efe9; display:flex; flex-direction:column; gap:22px;">
+
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom:2px solid #191814; padding-bottom:12px;">
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#c4491c; margin-bottom:8px;">PLATE 02 — SECTION A–A</div>
+      <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:38px; line-height:1; letter-spacing:-0.015em;">Air path &amp; sealing</div>
+    </div>
+    <div style="text-align:right; font-family:'IBM Plex Mono',monospace; font-size:11px; line-height:1.7; color:#55514a;">
+      CUT ON THE PLANE THROUGH THE AXIS<br>AND THE ACTIVE STATION
+    </div>
+  </div>
+
+  <p style="margin:0; font-size:14.5px; line-height:1.6; color:#2e2b26; max-width:920px; text-wrap:pretty;">
+    Nothing that seals ever slides. The disc runs at a fixed height with clearance above and below;
+    the two sealing faces retract to let it turn and close again on the detent. Hot air crosses to
+    the active station <em>before</em> it reaches the flower, so the only surfaces vapour touches are
+    the pod, the clamp, and the stub — all of which lift out.
+  </p>
+
+  <div style="background:#fbf9f5; border:1px solid #d9d4c7;">
+  <svg viewBox="130 118 350 142" width="100%" style="display:block;" aria-label="Cross-section through the active and queued stations">
+    <defs>
+      <pattern id="mtl" width="3.2" height="3.2" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="3.2" stroke="#8a857a" stroke-width="0.45"/>
+      </pattern>
+      <pattern id="mtl2" width="3.2" height="3.2" patternTransform="rotate(-45)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="3.2" stroke="#8a857a" stroke-width="0.45"/>
+      </pattern>
+      <pattern id="herb" width="3" height="3" patternUnits="userSpaceOnUse">
+        <path d="M 0.6,2.4 L 2.4,0.6 M 1.6,2.6 L 2.6,1.6" stroke="#7c8452" stroke-width="0.45"/>
+      </pattern>
+      <pattern id="heater" width="4" height="4" patternUnits="userSpaceOnUse">
+        <path d="M 0,4 L 4,0 M -1,1 L 1,-1 M 3,5 L 5,3" stroke="#a09a8c" stroke-width="0.5"/>
+      </pattern>
+      <marker id="ah" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse">
+        <path d="M 0,1 L 7,4 L 0,7 Z" fill="#c4491c"/>
+      </marker>
+      <marker id="av" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse">
+        <path d="M 0,1 L 7,4 L 0,7 Z" fill="#2d6480"/>
+      </marker>
+    </defs>
+
+    <!-- host heater + outlet -->
+    <path d="M 264,190 L 264,244 L 336,244 L 336,190 L 325,190 L 325,200 L 313,200 L 313,244 L 287,244 L 287,200 L 275,200 L 275,190 Z"
+          fill="url(#heater)" stroke="#6f6a5e" stroke-width="0.8"/>
+    <g fill="url(#mtl)" stroke="#3d3a32" stroke-width="0.8">
+      <rect x="275" y="190" width="12" height="10"/><rect x="313" y="190" width="12" height="10"/>
+    </g>
+
+    <!-- lower deck, with the annular pod-sweep groove -->
+    <path d="M 244,174 L 250,174 L 250,178 L 286,178 L 286,174 L 314,174 L 314,178 L 350,178 L 350,174 L 356,174 L 356,190 L 244,190 Z"
+          fill="url(#mtl)" stroke="#3d3a32" stroke-width="0.9"/>
+    <path d="M 287,190 L 287,181 L 346,181 L 346,187 L 313,187 L 313,190 Z" fill="#faf3ee" stroke="#c4491c" stroke-width="0.9"/>
+
+    <!-- floating nozzle at the active station -->
+    <path d="M 314.5,175.4 L 314.5,184 L 318,184 L 318,178 L 346,178 L 346,184 L 349.5,184 L 349.5,175.4 Z"
+          fill="#cfcabd" stroke="#3d3a32" stroke-width="0.85"/>
+    <rect x="314.5" y="174.6" width="35" height="0.9" fill="#3d3a32"/>
+    <path d="M 312,185.4 q 2,-1.4 4,0 q 2,1.4 4,0 M 342,185.4 q 2,-1.4 4,0 q 2,1.4 4,0" fill="none" stroke="#2d6480" stroke-width="0.8"/>
+
+    <!-- rotating disc + index ring -->
+    <path d="M 246,163 L 314.5,163 L 314.5,171 L 246,171 Z" fill="url(#mtl2)" stroke="#3d3a32" stroke-width="0.9"/>
+    <path d="M 349.5,163 L 354,163 L 354,171 L 349.5,171 Z" fill="url(#mtl2)" stroke="#3d3a32" stroke-width="0.9"/>
+    <rect x="250.5" y="163" width="35" height="8" fill="#f7f4ee"/>
+    <path d="M 250.5,163 L 250.5,171 M 285.5,163 L 285.5,171" stroke="#3d3a32" stroke-width="0.9" fill="none"/>
+    <g fill="#c6c1b3" stroke="#3d3a32" stroke-width="0.9">
+      <rect x="240" y="162" width="6" height="12"/><rect x="354" y="162" width="6" height="12"/>
+    </g>
+
+    <!-- active pod : FULL setting, no riser -->
+    <g stroke="#3d3a32" stroke-width="0.85">
+      <rect x="314.5" y="163" width="35" height="1.2" fill="#cfcabd"/>
+      <path d="M 315.5,164.2 L 315.5,175.4 L 348.5,175.4 L 348.5,164.2 L 347,164.2 L 347,174.2 L 317,174.2 L 317,164.2 Z" fill="#cfcabd"/>
+      <rect x="317" y="164.2" width="30" height="0.6" fill="#8a857a"/>
+      <rect x="317" y="173.6" width="30" height="0.6" fill="#8a857a"/>
+      <rect x="317" y="164.8" width="30" height="8.8" fill="url(#herb)"/>
+    </g>
+    <!-- queued pod : 0.25 g riser fitted -->
+    <g stroke="#3d3a32" stroke-width="0.85">
+      <rect x="250.5" y="163" width="35" height="1.2" fill="#cfcabd"/>
+      <path d="M 251.5,164.2 L 251.5,175.4 L 284.5,175.4 L 284.5,164.2 L 283,164.2 L 283,174.2 L 253,174.2 L 253,164.2 Z" fill="#cfcabd"/>
+      <rect x="253" y="164.2" width="30" height="0.6" fill="#8a857a"/>
+      <rect x="253" y="173.6" width="30" height="0.6" fill="#8a857a"/>
+      <rect x="253" y="169.6" width="30" height="4" fill="#b9b4a6"/>
+      <rect x="253" y="164.8" width="30" height="4.8" fill="url(#herb)"/>
+    </g>
+
+    <!-- upper deck + clamp + stub -->
+    <path d="M 246,153 L 314.5,153 L 314.5,163 L 246,163 Z" fill="url(#mtl)" stroke="#3d3a32" stroke-width="0.9"/>
+    <path d="M 349.5,153 L 354,153 L 354,163 L 349.5,163 Z" fill="url(#mtl)" stroke="#3d3a32" stroke-width="0.9"/>
+    <g fill="#cfcabd" stroke="#3d3a32" stroke-width="0.85">
+      <path d="M 314.5,155 L 314.5,162.4 L 318,162.4 L 318,155 Z"/>
+      <path d="M 346,155 L 346,162.4 L 349.5,162.4 L 349.5,155 Z"/>
+      <rect x="314.5" y="139" width="3.5" height="16"/><rect x="346" y="139" width="3.5" height="16"/>
+      <rect x="310" y="135" width="43.5" height="4"/>
+    </g>
+    <rect x="314.5" y="162.4" width="35" height="0.6" fill="#2d6480"/>
+    <path d="M 311.5,154 q 1.5,-1.2 3,0 q 1.5,1.2 3,0 M 346.5,154 q 1.5,-1.2 3,0 q 1.5,1.2 3,0" fill="none" stroke="#2d6480" stroke-width="0.8"/>
+
+    <!-- airflow -->
+    <g stroke="#c4491c" stroke-width="1.5" fill="none" marker-end="url(#ah)">
+      <path d="M 300,238 L 300,190"/><path d="M 297,185 L 339,185"/><path d="M 332,182 L 332,175.6"/>
+      <path d="M 325,174 L 325,166"/><path d="M 339,174 L 339,166"/>
+    </g>
+    <path d="M 332,164 L 332,142" stroke="#2d6480" stroke-width="1.5" fill="none" marker-end="url(#av)"/>
+
+    <!-- callouts -->
+    <g font-size="5" fill="#2e2b26">
+      <g stroke="#8a857a" stroke-width="0.5" fill="none">
+        <path d="M 349.5,144 L 376,144"/><path d="M 349,159 L 376,159"/><path d="M 349.5,163.6 L 376,173"/>
+        <path d="M 349.5,176 L 376,189"/><path d="M 346,185.4 L 376,205"/><path d="M 322,193 L 376,221"/>
+      </g>
+      <g fill="#c4491c"><circle cx="349.5" cy="144" r="1"/><circle cx="349" cy="159" r="1"/><circle cx="349.5" cy="163.6" r="1"/><circle cx="349.5" cy="176" r="1"/><circle cx="346" cy="185.4" r="1"/><circle cx="322" cy="193" r="1"/></g>
+      <text x="379" y="142.6">VAPOUR STUB</text><text x="379" y="148.4" fill="#7a756a">lifts off; only cleaned part</text>
+      <text x="379" y="157.6">CLAMP — retracts 2.5 mm</text><text x="379" y="163.4" fill="#7a756a">silicone O-ring, cool side</text>
+      <text x="379" y="171.6">POD FLANGE ON 3 PADS</text><text x="379" y="177.4" fill="#7a756a">minimal conduction into disc</text>
+      <text x="379" y="187.6">FLOATING NOZZLE — rises 1.2</text><text x="379" y="193.4" fill="#7a756a">lapped face + graphite ring</text>
+      <text x="379" y="203.6">INCONEL WAVE SPRING</text><text x="379" y="209.4" fill="#7a756a">holds load at temperature</text>
+      <text x="379" y="219.6">BAYONET COLLAR</text><text x="379" y="225.4" fill="#7a756a">stock housing, unmodified</text>
+
+      <g stroke="#8a857a" stroke-width="0.5" fill="none">
+        <path d="M 268,163.6 L 223,150"/><path d="M 258,172.5 L 223,168"/>
+        <path d="M 252,174.6 L 223,186"/><path d="M 300,188 L 223,204"/><path d="M 270,216 L 223,222"/>
+      </g>
+      <g fill="#c4491c"><circle cx="268" cy="163.6" r="1"/><circle cx="258" cy="172.5" r="1"/><circle cx="252" cy="174.6" r="1"/><circle cx="300" cy="188" r="1"/><circle cx="270" cy="216" r="1"/></g>
+      <text x="220" y="148.6" text-anchor="end">QUEUED POD — SEALED, IDLE</text><text x="220" y="154.4" text-anchor="end" fill="#7a756a">no seat contact, no airflow</text>
+      <text x="220" y="166.6" text-anchor="end">3 mm STILL-AIR GAP</text><text x="220" y="172.4" text-anchor="end" fill="#7a756a">disc never touches the deck</text>
+      <text x="220" y="184.6" text-anchor="end">POLISHED DECK FACE</text><text x="220" y="190.4" text-anchor="end" fill="#7a756a">doubles as radiant shield</text>
+      <text x="220" y="202.6" text-anchor="end">TRANSFER PLENUM</text><text x="220" y="208.4" text-anchor="end" fill="#7a756a">inlet side only — no vapour</text>
+      <text x="220" y="220.6" text-anchor="end">STOCK HEATER BLOCK</text><text x="220" y="226.4" text-anchor="end" fill="#7a756a">nothing added below the deck</text>
+    </g>
+
+    <!-- temperature bands -->
+    <g font-size="4.6">
+      <rect x="232" y="125" width="72" height="7.4" fill="#2d6480"/>
+      <text x="268" y="130.4" fill="#fbf9f5" text-anchor="middle">QUEUE — TARGET &lt; 60 °C</text>
+      <rect x="296" y="125" width="72" height="7.4" fill="#c4491c"/>
+      <text x="332" y="130.4" fill="#fbf9f5" text-anchor="middle">ACTIVE POD ≈ SET POINT</text>
+      <path d="M 268,132.4 L 268,161" stroke="#2d6480" stroke-width="0.5" stroke-dasharray="1.5 1.5" fill="none"/>
+      <path d="M 332,132.4 L 332,133.8" stroke="#c4491c" stroke-width="0.5" stroke-dasharray="1.5 1.5" fill="none"/>
+    </g>
+
+    <!-- centrelines + offset dimension -->
+    <g stroke="#c4491c" stroke-width="0.4" stroke-dasharray="6 2 1.5 2">
+      <line x1="300" y1="246" x2="300" y2="186"/><line x1="332" y1="250" x2="332" y2="180"/><line x1="268" y1="250" x2="268" y2="180"/>
+    </g>
+    <g stroke="#55514a" stroke-width="0.5" fill="none">
+      <line x1="300" y1="248" x2="332" y2="248"/>
+      <path d="M 303,246.5 L 300,248 L 303,249.5 M 329,246.5 L 332,248 L 329,249.5"/>
+    </g>
+    <text x="316" y="246.4" font-size="4.4" fill="#55514a" text-anchor="middle">32</text>
+    <text x="300" y="257" font-size="4.4" fill="#c4491c" text-anchor="middle">HEATER AXIS</text>
+    <text x="332" y="257" font-size="4.4" fill="#c4491c" text-anchor="middle">ACTIVE</text>
+    <text x="268" y="257" font-size="4.4" fill="#c4491c" text-anchor="middle">QUEUED</text>
+  </svg>
+  </div>
+
+  <!-- ── details ────────────────────────────────────────── -->
+  <div style="display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:22px; height:308px;">
+
+    <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:16px 18px; display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline;">
+        <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:17px;">Detail X — the hot seal</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#c4491c;">≤ 230 °C</div>
+      </div>
+      <svg viewBox="0 0 300 118" width="100%" style="display:block;">
+        <rect x="60" y="8" width="180" height="16" fill="#cfcabd" stroke="#3d3a32" stroke-width="1"/>
+        <text x="150" y="19" font-size="8" fill="#3d3a32" text-anchor="middle">POD BASE — lapped flat</text>
+        <rect x="60" y="25" width="180" height="7" fill="#3d3a32"/>
+        <text x="150" y="30.4" font-size="6.6" fill="#fbf9f5" text-anchor="middle">GRAPHITE FOIL CRUSH RING</text>
+        <path d="M 60,33 L 60,66 L 78,66 L 78,38 L 222,38 L 222,66 L 240,66 L 240,33 Z" fill="#dcd8cc" stroke="#3d3a32" stroke-width="1"/>
+        <text x="150" y="52" font-size="8" fill="#3d3a32" text-anchor="middle">FLOATING NOZZLE</text>
+        <path d="M 52,74 q 6,-5 12,0 q 6,5 12,0 q 6,-5 12,0" fill="none" stroke="#2d6480" stroke-width="1.6"/>
+        <path d="M 212,74 q 6,-5 12,0 q 6,5 12,0 q 6,-5 12,0" fill="none" stroke="#2d6480" stroke-width="1.6"/>
+        <text x="150" y="77" font-size="7.5" fill="#2d6480" text-anchor="middle">Inconel X-750 wave springs</text>
+        <rect x="40" y="84" width="220" height="12" fill="url(#mtl)" stroke="#3d3a32" stroke-width="1"/>
+        <text x="150" y="92.5" font-size="7.5" fill="#3d3a32" text-anchor="middle">LOWER DECK</text>
+        <g stroke="#c4491c" stroke-width="1.6" fill="none" marker-end="url(#ah)">
+          <path d="M 112,84 L 112,42"/><path d="M 112,36 L 112,10"/><path d="M 188,84 L 188,42"/><path d="M 188,36 L 188,10"/>
+        </g>
+        <g stroke="#55514a" stroke-width="0.7" fill="none">
+          <line x1="24" y1="24" x2="24" y2="33"/>
+          <path d="M 22,26.5 L 24,24 L 26,26.5 M 22,30.5 L 24,33 L 26,30.5"/>
+        </g>
+        <text x="18" y="31" font-size="7.5" fill="#55514a" text-anchor="end">1.2</text>
+      </svg>
+      <p style="margin:0; font-size:12.5px; line-height:1.5; color:#55514a; text-wrap:pretty;">
+        No elastomer anywhere near the heat. A lapped stainless face closed onto graphite foil by
+        spring preload, retracted by the same cam that frees the disc — so the face is only ever
+        loaded when stationary, and never wiped.
+      </p>
+    </div>
+
+    <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:16px 18px; display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline;">
+        <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:17px;">Detail Y — the cool seal</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#2d6480;">vapour side</div>
+      </div>
+      <svg viewBox="0 0 300 118" width="100%" style="display:block;">
+        <rect x="40" y="8" width="220" height="12" fill="url(#mtl)" stroke="#3d3a32" stroke-width="1"/>
+        <text x="150" y="16.5" font-size="7.5" fill="#3d3a32" text-anchor="middle">UPPER DECK</text>
+        <path d="M 52,30 q 6,-5 12,0 q 6,5 12,0 q 6,-5 12,0" fill="none" stroke="#2d6480" stroke-width="1.6"/>
+        <path d="M 212,30 q 6,-5 12,0 q 6,5 12,0 q 6,-5 12,0" fill="none" stroke="#2d6480" stroke-width="1.6"/>
+        <text x="150" y="33" font-size="7.5" fill="#2d6480" text-anchor="middle">clamp springs</text>
+        <path d="M 60,40 L 60,74 L 78,74 L 78,46 L 222,46 L 222,74 L 240,74 L 240,40 Z" fill="#dcd8cc" stroke="#3d3a32" stroke-width="1"/>
+        <text x="150" y="60" font-size="8" fill="#3d3a32" text-anchor="middle">CLAMP + VAPOUR PLENUM</text>
+        <rect x="60" y="75" width="180" height="7" rx="3.5" fill="#2d6480"/>
+        <text x="150" y="80.4" font-size="6.6" fill="#fbf9f5" text-anchor="middle">SILICONE O-RING</text>
+        <rect x="60" y="83" width="180" height="16" fill="#cfcabd" stroke="#3d3a32" stroke-width="1"/>
+        <text x="150" y="94" font-size="8" fill="#3d3a32" text-anchor="middle">POD FLANGE + LID SCREEN</text>
+        <g stroke="#2d6480" stroke-width="1.6" fill="none" marker-end="url(#av)">
+          <path d="M 112,83 L 112,50"/><path d="M 112,44 L 112,12"/><path d="M 188,83 L 188,50"/><path d="M 188,44 L 188,12"/>
+        </g>
+        <g stroke="#55514a" stroke-width="0.7" fill="none">
+          <line x1="24" y1="70" x2="24" y2="81"/>
+          <path d="M 22,72.5 L 24,70 L 26,72.5 M 22,78.5 L 24,81 L 26,78.5"/>
+        </g>
+        <text x="18" y="77" font-size="7.5" fill="#55514a" text-anchor="end">2.5</text>
+      </svg>
+      <p style="margin:0; font-size:12.5px; line-height:1.5; color:#55514a; text-wrap:pretty;">
+        The outlet side runs far cooler than the inlet, so a silicone O-ring is fine here. The clamp
+        lifts 2.5 mm — enough to clear the pod flange and the counterbore lip — and the whole plenum
+        pulls off the stub for cleaning.
+      </p>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:1px; background:#191814; border:1px solid #191814; font-family:'IBM Plex Mono',monospace;">
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">PLATE</div><div style="font-size:12px; margin-top:3px;">02 OF 08</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">UNITS</div><div style="font-size:12px; margin-top:3px;">mm</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">SECTION</div><div style="font-size:12px; margin-top:3px;">A–A</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">REV</div><div style="font-size:12px; margin-top:3px;">A</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#c4491c; letter-spacing:0.12em;">STATUS</div><div style="font-size:12px; margin-top:3px; color:#c4491c;">NOT FOR MANUFACTURE</div></div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
