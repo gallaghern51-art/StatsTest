@@ -1,0 +1,579 @@
+<title>Carousel 4 Simulator</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+  :root{
+    --bg:#f2efe9; --panel:#fbf9f5; --sunk:#efebe2; --ink:#191814; --ink2:#3f3c35;
+    --muted:#7a756a; --line:#d9d4c7; --line2:#ece8df;
+    --hot:#c4491c; --hot-soft:#f7ece4; --cool:#2d6480; --cool-soft:#e8eff3;
+    --ok:#4d7a44; --warn:#a8631a;
+    --steel:#cfcabd; --deck:#dcd8cc; --deckdark:#c6c1b3; --hatch:#8a857a;
+    --herb:#7c8452; --herb-spent:#9a8f6e; --glass:#dfe6e4;
+    --shadow:0 1px 2px rgba(25,24,20,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#141310; --panel:#1d1c17; --sunk:#171610; --ink:#ece8dd; --ink2:#c9c4b6;
+      --muted:#8f8a7c; --line:#33312a; --line2:#292720;
+      --hot:#e0663a; --hot-soft:#2c1c14; --cool:#5b9ec2; --cool-soft:#141f26;
+      --ok:#84ad78; --warn:#d09144;
+      --steel:#4a4740; --deck:#3a3830; --deckdark:#514d44; --hatch:#6d685d;
+      --herb:#8d9757; --herb-spent:#6b6247; --glass:#2a3230;
+      --shadow:0 1px 2px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#141310; --panel:#1d1c17; --sunk:#171610; --ink:#ece8dd; --ink2:#c9c4b6;
+    --muted:#8f8a7c; --line:#33312a; --line2:#292720;
+    --hot:#e0663a; --hot-soft:#2c1c14; --cool:#5b9ec2; --cool-soft:#141f26;
+    --ok:#84ad78; --warn:#d09144;
+    --steel:#4a4740; --deck:#3a3830; --deckdark:#514d44; --hatch:#6d685d;
+    --herb:#8d9757; --herb-spent:#6b6247; --glass:#2a3230;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:"IBM Plex Sans","Helvetica Neue",Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--hot)} a:hover{color:var(--warn)}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+  .disp{font-family:"Space Grotesk","Helvetica Neue",Helvetica,sans-serif}
+
+  .wrap{max-width:1360px;margin:0 auto;padding:26px 22px 40px}
+  header{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;
+         border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:18px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;color:var(--hot);margin-bottom:8px}
+  h1{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(28px,4vw,42px);
+     line-height:1;letter-spacing:-.02em;margin:0}
+  .sub{font-size:13.5px;color:var(--muted);margin-top:9px;max-width:62ch;line-height:1.5}
+  .pill{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+        padding:6px 11px;border:1px solid var(--line);background:var(--panel);white-space:nowrap}
+  .pill.live{border-color:var(--hot);color:var(--hot)}
+
+  .hint{display:flex;gap:11px;align-items:center;background:var(--panel);border:1px solid var(--line);
+        padding:12px 15px;margin-bottom:18px;font-size:14px;box-shadow:var(--shadow)}
+  .hint b{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;color:var(--hot);
+          font-weight:500;flex-shrink:0}
+  .hint.alarm{border-color:var(--hot);background:var(--hot-soft)}
+
+  .grid{display:grid;grid-template-columns:minmax(0,1.42fr) minmax(320px,1fr);gap:20px;align-items:start}
+  @media (max-width:980px){ .grid{grid-template-columns:minmax(0,1fr)} }
+
+  .card{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}
+  .card + .card{margin-top:16px}
+  .card-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+          padding:12px 15px;border-bottom:1px solid var(--line2)}
+  .card-h h2{font-family:"Space Grotesk",sans-serif;font-size:15px;font-weight:700;margin:0}
+  .card-h span{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.11em;color:var(--muted)}
+  .card-b{padding:14px 15px}
+
+  svg{display:block;width:100%;height:auto}
+  .stage-note{padding:8px 15px;border-top:1px solid var(--line2);font-family:"IBM Plex Mono",monospace;
+              font-size:10px;letter-spacing:.06em;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  .planrow{display:grid;grid-template-columns:290px minmax(0,1fr);gap:22px;align-items:center}
+  @media (max-width:700px){
+    .planrow{grid-template-columns:minmax(0,1fr);gap:14px}
+    .stations{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .wrap{padding:20px 14px 32px}
+    .log{height:170px}
+  }
+  .btns{display:flex;flex-wrap:wrap;gap:8px}
+  button{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.07em;
+         padding:9px 13px;min-height:44px;border:1px solid var(--line);background:var(--panel);color:var(--ink);
+         cursor:pointer;transition:background .12s,border-color .12s,color .12s}
+  button:hover:not(:disabled){border-color:var(--ink);background:var(--sunk)}
+  button:disabled{opacity:.36;cursor:not-allowed}
+  button.primary{background:var(--hot);border-color:var(--hot);color:#fbf9f5}
+  button.primary:hover:not(:disabled){background:var(--warn);border-color:var(--warn)}
+  button.on{background:var(--cool);border-color:var(--cool);color:#fbf9f5}
+  button.on:hover:not(:disabled){background:var(--cool);border-color:var(--ink)}
+
+  .seg{display:flex;border:1px solid var(--line)}
+  .seg button{border:0;border-right:1px solid var(--line);flex:1;min-height:38px}
+  .seg button:last-child{border-right:0}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+  .slider{display:flex;align-items:center;gap:12px;margin-top:12px}
+  .slider input{flex:1;accent-color:var(--hot);height:44px}
+  .slider .val{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:20px;min-width:74px;text-align:right}
+
+  .stations{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+  .st{border:1px solid var(--line);background:var(--sunk);padding:9px 8px 10px;cursor:pointer;text-align:left;
+      min-height:auto;display:block;letter-spacing:0}
+  .st:hover:not(:disabled){border-color:var(--ink)}
+  .st .band{height:4px;margin:-9px -8px 8px}
+  .st .n{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.11em;color:var(--muted)}
+  .st .g{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:17px;margin-top:1px}
+  .st .d{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.08em;color:var(--muted);margin-top:1px}
+  .st.active{border-color:var(--hot);background:var(--hot-soft)}
+  .st.active .n{color:var(--hot)}
+  .pips{display:flex;gap:3px;margin-top:7px}
+  .pip{width:100%;height:5px;background:var(--line)}
+  .pip.on{background:var(--ink)}
+  .st.active .pip.on{background:var(--hot)}
+
+  table{width:100%;border-collapse:collapse}
+  td{padding:7px 0;font-size:12.5px;border-bottom:1px solid var(--line2);vertical-align:middle}
+  td:first-child{color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em}
+  td:last-child{text-align:right;font-family:"IBM Plex Mono",monospace;font-size:12px}
+  tr:last-child td{border-bottom:0}
+  .tag{padding:2px 7px;font-size:10px;letter-spacing:.08em}
+  .tag.hot{background:var(--hot);color:#fbf9f5}
+  .tag.cool{background:var(--cool);color:#fbf9f5}
+  .tag.idle{background:var(--line);color:var(--ink2)}
+  .meter{height:5px;background:var(--line);margin-top:5px;overflow:hidden}
+  .meter i{display:block;height:100%;background:var(--hot);transition:width .2s linear}
+  .meter.c i{background:var(--cool)}
+
+  .log{height:200px;overflow-y:auto;font-family:"IBM Plex Mono",monospace;font-size:11px;line-height:1.65}
+  .log div{display:flex;gap:9px;padding:3px 0;border-bottom:1px solid var(--line2)}
+  .log time{color:var(--muted);flex-shrink:0}
+  .log .warn{color:var(--hot)} .log .ok{color:var(--ok)} .log .hot{color:var(--warn)}
+
+  footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);
+         font-size:12px;color:var(--muted);line-height:1.6;max-width:88ch}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">CAROUSEL 4 — WORKING DEMONSTRATION</div>
+      <h1>The whole cycle, end to end</h1>
+      <div class="sub">A simulation of the four-station pod changer fitted to a Volcano Hybrid: seat the collar,
+        load the disc, bring it to temperature, fill a bag, and let the motor step to the next serving.
+        Seal travel is drawn at three times scale so you can see it.</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <div class="pill" id="phasePill">DETACHED</div>
+      <div class="pill" id="clockPill">00:00</div>
+    </div>
+  </header>
+
+  <div class="hint" id="hint"><b>NEXT</b><span id="hintText">Fit the carousel to the Volcano.</span></div>
+
+  <div class="grid">
+    <div>
+      <div class="card">
+        <div class="card-h"><h2>Section through the active station</h2><span id="secLabel">STATION 1</span></div>
+        <svg viewBox="182 22 256 258" role="img" aria-labelledby="secTitle">
+          <title id="secTitle">Animated cross-section of the carousel fitted to a Volcano Hybrid</title>
+          <defs>
+            <pattern id="mtl" width="3.2" height="3.2" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="3.2" stroke="var(--hatch)" stroke-width=".45"/>
+            </pattern>
+            <pattern id="mtl2" width="3.2" height="3.2" patternTransform="rotate(-45)" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="3.2" stroke="var(--hatch)" stroke-width=".45"/>
+            </pattern>
+            <clipPath id="discClip"><rect x="246" y="150" width="108" height="30"/></clipPath>
+            <marker id="ah" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+              <path d="M0,1 L7,4 L0,7 Z" fill="var(--hot)"/>
+            </marker>
+            <marker id="av" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+              <path d="M0,1 L7,4 L0,7 Z" fill="var(--cool)"/>
+            </marker>
+          </defs>
+
+          <!-- balloon -->
+          <g id="balloonGhost">
+            <ellipse cx="332" cy="80" rx="59.4" ry="53" fill="none" stroke="var(--line)" stroke-width=".9" stroke-dasharray="4 3.5"/>
+            <text x="332" y="82" font-size="7" text-anchor="middle" class="mono" fill="var(--muted)">EASY VALVE BALLOON</text>
+          </g>
+          <g id="balloonG" opacity="0">
+            <ellipse id="balloon" cx="332" cy="120" rx="10" ry="10" fill="var(--glass)" stroke="var(--cool)" stroke-width="1"/>
+            <text id="balloonPct" x="332" y="122" font-size="7" text-anchor="middle" class="mono" fill="var(--cool)">0%</text>
+          </g>
+
+          <!-- whole assembly lifts away when detached -->
+          <g id="rig">
+            <!-- volcano shell + heater -->
+            <path d="M254,200 L236,278 L428,278 L410,200 Z" fill="var(--deck)" stroke="var(--hatch)" stroke-width=".9" opacity=".55"/>
+            <path id="heater" d="M264,190 L264,244 L336,244 L336,190 L325,190 L325,200 L313,200 L313,244 L287,244 L287,200 L275,200 L275,190 Z"
+                  fill="var(--steel)" stroke="var(--hatch)" stroke-width=".8"/>
+            <text x="300" y="262" font-size="5.4" text-anchor="middle" class="mono" fill="var(--muted)">VOLCANO HYBRID</text>
+
+            <g id="unit">
+              <!-- collar -->
+              <g fill="url(#mtl)" stroke="var(--ink2)" stroke-width=".8">
+                <rect x="275" y="190" width="12" height="10"/><rect x="313" y="190" width="12" height="10"/>
+              </g>
+              <!-- lower deck + plenum -->
+              <path d="M244,174 L250,174 L250,178 L286,178 L286,174 L314,174 L314,178 L350,178 L350,174 L356,174 L356,190 L244,190 Z"
+                    fill="url(#mtl)" stroke="var(--ink2)" stroke-width=".9"/>
+              <path id="plenum" d="M287,190 L287,181 L346,181 L346,187 L313,187 L313,190 Z"
+                    fill="var(--panel)" stroke="var(--hot)" stroke-width=".9"/>
+              <!-- floating nozzle -->
+              <g id="nozzle">
+                <path d="M314.5,175.4 L314.5,184 L318,184 L318,178 L346,178 L346,184 L349.5,184 L349.5,175.4 Z"
+                      fill="var(--steel)" stroke="var(--ink2)" stroke-width=".85"/>
+                <rect x="314.5" y="174.4" width="35" height="1.1" fill="var(--ink)"/>
+              </g>
+              <!-- disc -->
+              <path d="M246,163 L354,163 L354,171 L246,171 Z" fill="url(#mtl2)" stroke="var(--ink2)" stroke-width=".9"/>
+              <g id="pods" clip-path="url(#discClip)"></g>
+              <g fill="var(--deckdark)" stroke="var(--ink2)" stroke-width=".9">
+                <rect x="240" y="162" width="6" height="12"/><rect x="354" y="162" width="6" height="12"/>
+              </g>
+              <!-- upper deck -->
+              <path d="M246,153 L314.5,153 L314.5,163 L246,163 Z" fill="url(#mtl)" stroke="var(--ink2)" stroke-width=".9"/>
+              <path d="M349.5,153 L354,153 L354,163 L349.5,163 Z" fill="url(#mtl)" stroke="var(--ink2)" stroke-width=".9"/>
+              <rect x="252" y="145" width="26" height="8" rx="1.6" fill="var(--deckdark)" stroke="var(--ink2)" stroke-width=".8"/>
+              <circle id="motorLed" cx="265" cy="149" r="1.9" fill="var(--muted)"/>
+              <text x="265" y="141" font-size="4.4" text-anchor="middle" class="mono" fill="var(--muted)">DRIVE</text>
+              <!-- clamp + stub -->
+              <g id="clamp">
+                <g fill="var(--steel)" stroke="var(--ink2)" stroke-width=".85">
+                  <path d="M314.5,155 L314.5,162.4 L318,162.4 L318,155 Z"/>
+                  <path d="M346,155 L346,162.4 L349.5,162.4 L349.5,155 Z"/>
+                  <rect x="314.5" y="139" width="3.5" height="16"/><rect x="346" y="139" width="3.5" height="16"/>
+                  <rect x="310" y="135" width="43.5" height="4"/>
+                </g>
+                <rect x="314.5" y="162.4" width="35" height=".8" fill="var(--cool)"/>
+              </g>
+            </g>
+          </g>
+
+          <!-- airflow -->
+          <g id="flowIn" opacity="0" stroke="var(--hot)" stroke-width="1.6" fill="none"
+             stroke-dasharray="5 4" marker-end="url(#ah)">
+            <path d="M300,240 L300,186 L332,186 L332,177"/>
+          </g>
+          <g id="flowOut" opacity="0" stroke="var(--cool)" stroke-width="1.6" fill="none"
+             stroke-dasharray="5 4" marker-end="url(#av)">
+            <path d="M332,163 L332,134"/>
+          </g>
+
+          <!-- seal state chips -->
+          <g class="mono" id="chips">
+            <rect id="nzChip" x="366" y="176" width="60" height="8" fill="var(--ok)"/>
+            <text id="nzText" x="396" y="182" font-size="5" text-anchor="middle" fill="var(--panel)">NOZZLE SEATED</text>
+            <rect id="clChip" x="366" y="156" width="60" height="8" fill="var(--ok)"/>
+            <text id="clText" x="396" y="162" font-size="5" text-anchor="middle" fill="var(--panel)">CLAMP CLOSED</text>
+            <text x="396" y="196" font-size="4.6" text-anchor="middle" fill="var(--muted)">SEAL TRAVEL ×3</text>
+          </g>
+          <g class="mono">
+            <text id="tempRead" x="206" y="216" font-size="8" fill="var(--muted)">22 °C</text>
+            <text x="206" y="224" font-size="4.6" fill="var(--muted)">HEATER</text>
+          </g>
+        </svg>
+        <div class="stage-note">
+          <span id="noteA">HOT AIR — HEATER TO ACTIVE POD, INLET SIDE ONLY</span>
+          <span id="noteB">VAPOUR — POD TO STUB</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><h2>Disc, from above</h2><span id="planLabel">HOMED · STATION 1</span></div>
+        <div class="card-b planrow">
+          <svg viewBox="-70 -70 176 140" role="img" aria-label="Plan view of the rotating disc">
+            <circle cx="0" cy="0" r="60" fill="var(--deckdark)" stroke="var(--ink2)" stroke-width=".9"/>
+            <circle cx="0" cy="0" r="54" fill="var(--sunk)" stroke="var(--ink2)" stroke-width=".9"/>
+            <g id="discG"></g>
+            <circle cx="0" cy="0" r="11" fill="var(--steel)" stroke="var(--ink2)" stroke-width=".8"/>
+            <circle cx="32" cy="0" r="21" fill="none" stroke="var(--hot)" stroke-width=".7" stroke-dasharray="3 2"/>
+            <path d="M68,-4.5 L68,4.5 L61.5,0 Z" fill="var(--hot)"/>
+            <text x="72" y="-1" font-size="5.6" class="mono" fill="var(--hot)">NOZZLE</text>
+            <text x="72" y="6.4" font-size="5.6" class="mono" fill="var(--muted)">BELOW</text>
+          </svg>
+          <div>
+            <table>
+              <tr><td>CAM ANGLE</td><td id="tCam">0°</td></tr>
+              <tr><td>NOZZLE</td><td id="tNoz">seated · 0.00 mm</td></tr>
+              <tr><td>CLAMP</td><td id="tCla">closed · 0.00 mm</td></tr>
+              <tr><td>PLENUM FLOW</td><td id="tFlow"><span class="tag idle mono">NONE</span></td></tr>
+              <tr><td>DRIVE</td><td id="tDrive">not homed</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card">
+        <div class="card-h"><h2>Controls</h2><span id="speedLabel">4× SPEED</span></div>
+        <div class="card-b">
+          <div class="btns">
+            <button id="bFit">FIT UNIT</button>
+            <button id="bPower">HEATER ON</button>
+            <button id="bHome">HOME DRIVE</button>
+          </div>
+          <div class="slider">
+            <input id="temp" type="range" min="40" max="230" step="5" value="185" aria-label="Set temperature">
+            <div class="val"><span id="tempVal">185</span> °C</div>
+          </div>
+          <div class="btns" style="margin-top:12px">
+            <button id="bFill" class="primary">FILL BAG</button>
+            <button id="bTake">TAKE BAG</button>
+            <button id="bIndex">INDEX ▸</button>
+          </div>
+          <div class="btns" style="margin-top:12px">
+            <button id="bAuto">AUTO ADVANCE</button>
+            <button id="bReload">RELOAD DISC</button>
+            <button id="bReset">RESET</button>
+          </div>
+          <div class="seg" style="margin-top:12px" role="group" aria-label="Simulation speed">
+            <button data-speed="1">1×</button><button data-speed="4">4×</button><button data-speed="12">12×</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><h2>The disc</h2><span>TAP A STATION TO CHANGE ITS POD</span></div>
+        <div class="card-b">
+          <div class="stations" id="stations"></div>
+          <table style="margin-top:12px">
+            <tr><td>LOADED</td><td id="tLoad">1.45 g</td></tr>
+            <tr><td>REMAINING</td><td id="tRem">1.45 g</td></tr>
+            <tr><td>BAGS TAKEN</td><td id="tBags">0</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><h2>Telemetry</h2><span id="phaseLabel">DETACHED</span></div>
+        <div class="card-b">
+          <table>
+            <tr><td>HEATER</td><td id="tTemp">22 / 185 °C</td></tr>
+            <tr><td>BALLOON</td><td id="tBag">0%</td></tr>
+            <tr><td>ACTIVE POD</td><td id="tPod">FULL · 3 bags</td></tr>
+            <tr><td>FILL TIME</td><td id="tFillT">42 s</td></tr>
+          </table>
+          <div class="meter"><i id="mTemp" style="width:0%"></i></div>
+          <div class="meter c" style="margin-top:4px"><i id="mBag" style="width:0%"></i></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><h2>Event log</h2><span>NEWEST FIRST</span></div>
+        <div class="card-b"><div class="log" id="log"></div></div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    Everything here is simulated from the concept's own numbers — heat-up follows the Volcano Hybrid's published
+    40-second figure to 180 °C, bag-fill time scales with bed depth, and a pod yields one to three bags depending
+    on its riser. Nothing has been built or measured. The interlock shown — the drive refusing to move while the
+    plenum sensor reports flow — is the behaviour the controller is meant to enforce, not tested behaviour.
+  </footer>
+</div>
+
+<script>
+/*__SIM__*/
+
+// ── wiring ────────────────────────────────────────────────────────────────
+const sim = createSim();
+const $ = id => document.getElementById(id);
+const VIS = 3;                       // seal-travel exaggeration
+const SLOT = 64;                     // mm between the drawn pod slots
+let speed = 4, last = performance.now();
+
+const SLOTS = [204, 268, 332, 396];
+const svgNS = 'http://www.w3.org/2000/svg';
+const el = (n, a) => { const e = document.createElementNS(svgNS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
+
+function podShape(cx, st) {
+  const d = sim.doses[st.dose];
+  const g = el('g', {});
+  if (d.key === 'empty') {
+    g.appendChild(el('rect', { x: cx - 17.5, y: 163, width: 35, height: 8,
+      fill: 'none', stroke: 'var(--muted)', 'stroke-width': .7, 'stroke-dasharray': '2 2' }));
+    return g;
+  }
+  const frac = d.bags ? st.bagsLeft / d.bags : 0;
+  const bedFull = 10.6;                              // drawn depth of a full bed
+  const bedH = Math.max(0.6, bedFull * (d.bed / 10) * frac);
+  const bodyTop = 164.2, bodyBot = 175.4;
+  g.appendChild(el('rect', { x: cx - 17.5, y: 163, width: 35, height: 1.2, fill: d.band }));
+  g.appendChild(el('path', {
+    d: `M${cx - 16.5},${bodyTop} L${cx - 16.5},${bodyBot} L${cx + 16.5},${bodyBot} L${cx + 16.5},${bodyTop}
+        L${cx + 15},${bodyTop} L${cx + 15},${bodyBot - 1.2} L${cx - 15},${bodyBot - 1.2} L${cx - 15},${bodyTop} Z`,
+    fill: 'var(--steel)', stroke: 'var(--ink2)', 'stroke-width': .85 }));
+  const riserH = (10 - d.bed) * 1.06;
+  if (riserH > 0.2) g.appendChild(el('rect', { x: cx - 15, y: bodyBot - 1.2 - riserH, width: 30, height: riserH,
+    fill: 'var(--deckdark)', stroke: 'var(--hatch)', 'stroke-width': .4 }));
+  const bedBase = bodyBot - 1.2 - riserH;
+  g.appendChild(el('rect', { x: cx - 15, y: bedBase - bedH, width: 30, height: bedH,
+    fill: frac > .55 ? 'var(--herb)' : 'var(--herb-spent)', opacity: .85 }));
+  g.appendChild(el('rect', { x: cx - 15, y: bodyTop, width: 30, height: .6, fill: 'var(--hatch)' }));
+  g.appendChild(el('rect', { x: cx - 15, y: bodyBot - 1.8, width: 30, height: .6, fill: 'var(--hatch)' }));
+  return g;
+}
+
+function drawPods() {
+  const host = $('pods'); host.textContent = '';
+  const a = sim.state.active;
+  SLOTS.forEach((cx, k) => {
+    const idx = (a + (k - 2) + 8) % 4;
+    host.appendChild(podShape(cx, sim.state.stations[idx]));
+  });
+}
+
+function drawDisc(rotDeg) {
+  const host = $('discG'); host.textContent = '';
+  const a = sim.state.active;
+  const pos = [[32, 0], [0, 32], [-32, 0], [0, -32]];
+  for (let i = 0; i < 4; i++) {
+    const off = (i - a + 8) % 4;                      // 0 = active, then clockwise
+    const [x, y] = pos[off];
+    const st = sim.state.stations[i], d = sim.doses[st.dose];
+    const g = el('g', {});
+    g.appendChild(el('circle', { cx: x, cy: y, r: 17.5,
+      fill: d.key === 'empty' ? 'var(--sunk)' : 'var(--panel)',
+      stroke: off === 0 ? 'var(--hot)' : 'var(--ink2)', 'stroke-width': off === 0 ? 1.8 : .85 }));
+    if (d.key !== 'empty') {
+      g.appendChild(el('circle', { cx: x, cy: y, r: 14.6, fill: 'none', stroke: d.band, 'stroke-width': 2 }));
+      const frac = st.bagsLeft / d.bags;
+      g.appendChild(el('circle', { cx: x, cy: y, r: 11.5 * Math.max(.18, frac),
+        fill: frac > .55 ? 'var(--herb)' : 'var(--herb-spent)', opacity: .5 }));
+    }
+    const t = el('text', { x, y: y + 2.4, 'font-size': 7, 'text-anchor': 'middle',
+      transform: `rotate(${-rotDeg} ${x} ${y})`,
+      fill: off === 0 ? 'var(--hot)' : 'var(--muted)', 'font-weight': 600 });
+    t.setAttribute('class', 'mono'); t.textContent = String(i + 1);
+    g.appendChild(t);
+    host.appendChild(g);
+  }
+}
+
+function stationCards() {
+  const host = $('stations'); host.textContent = '';
+  sim.state.stations.forEach((st, i) => {
+    const d = sim.doses[st.dose];
+    const b = document.createElement('button');
+    b.className = 'st' + (i === sim.state.active ? ' active' : '');
+    b.type = 'button';
+    const pips = d.bags
+      ? Array.from({ length: d.bags }, (_, k) => `<i class="pip${k < st.bagsLeft ? ' on' : ''}"></i>`).join('')
+      : '<i class="pip"></i>';
+    b.innerHTML = `<div class="band" style="background:${d.key === 'empty' ? 'var(--line)' : d.band}"></div>
+      <div class="n">${String(i + 1).padStart(2, '0')}${i === sim.state.active ? ' · ACTIVE' : ''}</div>
+      <div class="g">${d.g ? d.g.toFixed(2) + ' g' : '—'}</div>
+      <div class="d">${d.label}</div><div class="pips">${pips}</div>`;
+    b.onclick = () => { sim.cycleDose(i); paint(); };
+    host.appendChild(b);
+  });
+}
+
+const clockStr = t => `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(Math.floor(t % 60)).padStart(2, '0')}`;
+
+function paint() {
+  const s = sim.state, d = sim.dose;
+  const nz = sim.nozzleRetract(), cl = sim.clampRetract();
+  const p = s.phase === 'indexing' ? s.indexT / 1.4 : 0;
+
+  $('nozzle').setAttribute('transform', `translate(0 ${nz * 1.2 * VIS})`);
+  $('clamp').setAttribute('transform', `translate(0 ${-cl * 2.5 * VIS})`);
+  $('pods').setAttribute('transform', `translate(${-SLOT * p} 0)`);
+  $('discG').setAttribute('transform', `rotate(${p * 90})`);
+  $('rig').setAttribute('transform', s.phase === 'detached' ? '' : '');
+  $('unit').setAttribute('transform', s.phase === 'detached' ? 'translate(0 -44)' : '');
+  $('unit').setAttribute('opacity', s.phase === 'detached' ? '.42' : '1');
+
+  const hotness = Math.max(0, Math.min(1, (s.temp - 50) / 180));
+  $('heater').setAttribute('fill', hotness < .04 ? 'var(--steel)'
+    : `color-mix(in oklab, var(--hot) ${Math.round(hotness * 46)}%, var(--steel))`);
+  $('plenum').setAttribute('fill', sim.flow ? 'var(--hot-soft)' : 'var(--panel)');
+  $('tempRead').textContent = Math.round(s.temp) + ' °C';
+
+  $('flowIn').setAttribute('opacity', sim.flow ? '1' : '0');
+  $('flowOut').setAttribute('opacity', sim.flow ? '1' : '0');
+  if (sim.flow) {
+    const o = -(s.clock * 26) % 9;
+    $('flowIn').setAttribute('stroke-dashoffset', o);
+    $('flowOut').setAttribute('stroke-dashoffset', o);
+  }
+
+  $('balloonG').setAttribute('opacity', s.bag > 0.002 ? '1' : '0');
+  const fitted = s.phase !== 'detached';
+  $('balloonGhost').setAttribute('opacity', (fitted && s.bag <= 0.002) ? '.85' : '0');
+  $('chips').setAttribute('opacity', fitted ? '1' : '0');
+  const ry = 5 + s.bag * 48;
+  $('balloon').setAttribute('ry', ry); $('balloon').setAttribute('rx', ry * 1.12);
+  $('balloon').setAttribute('cy', 133 - ry);
+  $('balloonPct').setAttribute('y', 135 - ry);
+  $('balloonPct').textContent = Math.round(s.bag * 100) + '%';
+
+  const seated = nz < .02, closed = cl < .02;
+  $('nzChip').setAttribute('fill', seated ? 'var(--ok)' : 'var(--hot)');
+  $('nzText').textContent = seated ? 'NOZZLE SEATED' : 'NOZZLE CLEAR';
+  $('clChip').setAttribute('fill', closed ? 'var(--ok)' : 'var(--hot)');
+  $('clText').textContent = closed ? 'CLAMP CLOSED' : 'CLAMP OPEN';
+  $('motorLed').setAttribute('fill', sim.busy ? 'var(--hot)' : (s.homed ? 'var(--ok)' : 'var(--muted)'));
+
+  $('phasePill').textContent = s.phase.toUpperCase();
+  $('phasePill').className = 'pill' + (sim.flow || sim.busy ? ' live' : '');
+  $('phaseLabel').textContent = s.phase.toUpperCase();
+  $('clockPill').textContent = clockStr(s.clock);
+  $('secLabel').textContent = 'STATION ' + (s.active + 1);
+  $('planLabel').textContent = (s.homed ? 'HOMED' : 'NOT HOMED') + ' · STATION ' + (s.active + 1);
+
+  $('hintText').textContent = sim.nextStep();
+  $('hint').className = 'hint' + (s.interlockFlash > 0 ? ' alarm' : '');
+
+  $('tCam').textContent = s.camAngle.toFixed(0) + '°';
+  $('tNoz').textContent = (seated ? 'seated' : 'clear') + ' · ' + (nz * 1.2).toFixed(2) + ' mm';
+  $('tCla').textContent = (closed ? 'closed' : 'open') + ' · ' + (cl * 2.5).toFixed(2) + ' mm';
+  $('tFlow').innerHTML = sim.flow ? '<span class="tag hot mono">FLOW</span>' : '<span class="tag idle mono">NONE</span>';
+  $('tDrive').textContent = sim.busy ? (s.phase === 'homing' ? 'homing…' : 'stepping…') : (s.homed ? 'ready' : 'not homed');
+  $('tTemp').textContent = Math.round(s.temp) + ' / ' + s.setTemp + ' °C';
+  $('tBag').textContent = Math.round(s.bag * 100) + '%';
+  $('tPod').textContent = d.g ? d.label + ' · ' + sim.pod.bagsLeft + ' bag' + (sim.pod.bagsLeft === 1 ? '' : 's') : 'empty';
+  $('tFillT').textContent = d.g ? Math.round(sim.fillSeconds()) + ' s' : '—';
+  $('tLoad').textContent = sim.totalCharge().toFixed(2) + ' g';
+  $('tRem').textContent = sim.remainingCharge().toFixed(2) + ' g';
+  $('tBags').textContent = String(s.bagsDone);
+  $('mTemp').style.width = Math.min(100, Math.max(0, (s.temp - 22) / (s.setTemp - 22) * 100)) + '%';
+  $('mBag').style.width = (s.bag * 100) + '%';
+
+  $('bFit').textContent = s.phase === 'detached' ? 'FIT UNIT' : 'REMOVE UNIT';
+  $('bPower').textContent = s.power ? 'HEATER OFF' : 'HEATER ON';
+  $('bPower').className = s.power ? 'on' : '';
+  $('bAuto').className = s.auto ? 'on' : '';
+  $('bFit').disabled = sim.busy || sim.flow;
+  $('bPower').disabled = s.phase === 'detached';
+  $('bHome').disabled = s.phase === 'detached' || sim.busy || sim.flow;
+  $('bFill').disabled = !sim.canFill();
+  $('bTake').disabled = s.bag <= 0;
+  $('bIndex').disabled = s.phase === 'detached' || sim.busy || (!s.homed && !sim.flow);
+  $('bReload').disabled = sim.busy || sim.flow;
+  $('temp').disabled = s.phase === 'detached';
+  if (sim.flow) { $('bFill').textContent = 'STOP PUMP'; $('bFill').className = ''; }
+  else { $('bFill').textContent = 'FILL BAG'; $('bFill').className = 'primary'; }
+
+  drawPods(); drawDisc(p * 90); stationCards();
+
+  $('log').innerHTML = s.log.map(l =>
+    `<div><time>${clockStr(l.t)}</time><span class="${l.kind}">${l.text}</span></div>`).join('');
+}
+
+// ── input ────────────────────────────────────────────────────────────────
+$('bFit').onclick   = () => { sim.state.phase === 'detached' ? sim.fit() : sim.remove(); paint(); };
+$('bPower').onclick = () => { sim.togglePower(); paint(); };
+$('bHome').onclick  = () => { sim.home(); paint(); };
+$('bFill').onclick  = () => { sim.flow ? sim.stopFill() : sim.fill(); paint(); };
+$('bTake').onclick  = () => { sim.takeBag(); paint(); };
+$('bIndex').onclick = () => { sim.index(); paint(); };
+$('bAuto').onclick  = () => { sim.toggleAuto(); paint(); };
+$('bReload').onclick= () => { sim.reloadAll(); paint(); };
+$('bReset').onclick = () => { sim.reset(); paint(); };
+$('temp').oninput   = e => { sim.setTemp(+e.target.value); $('tempVal').textContent = sim.state.setTemp; paint(); };
+document.querySelectorAll('[data-speed]').forEach(b => {
+  b.onclick = () => {
+    speed = +b.dataset.speed;
+    document.querySelectorAll('[data-speed]').forEach(x => x.setAttribute('aria-pressed', String(+x.dataset.speed === speed)));
+    $('speedLabel').textContent = speed + '× SPEED';
+  };
+  b.setAttribute('aria-pressed', String(+b.dataset.speed === speed));
+});
+
+function frame(now) {
+  const dt = Math.min(0.25, (now - last) / 1000);
+  last = now;
+  sim.step(dt * speed);
+  paint();
+  requestAnimationFrame(frame);
+}
+paint();
+requestAnimationFrame(frame);
+</script>

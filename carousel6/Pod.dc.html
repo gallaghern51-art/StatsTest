@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+  <style>
+    body { margin:0; background:#f2efe9; color:#191814;
+           font-family:"IBM Plex Sans","Helvetica Neue",Helvetica,sans-serif;
+           -webkit-font-smoothing:antialiased; }
+    a { color:#c4491c; } a:hover { color:#8f3413; }
+    svg text { font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace; }
+    td, th { text-align:left; padding:9px 14px; font-size:13px; }
+    th { font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:0.12em; color:#7a756a; font-weight:500; }
+  </style>
+</helmet>
+
+<div style="box-sizing:border-box; width:1120px; height:1126px; padding:44px 48px 36px; background:#f2efe9; display:flex; flex-direction:column; gap:22px;">
+
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom:2px solid #191814; padding-bottom:12px;">
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#c4491c; margin-bottom:8px;">PLATE 04 — THE POD</div>
+      <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:38px; line-height:1; letter-spacing:-0.015em;">One pod, four servings</div>
+    </div>
+    <div style="text-align:right; font-family:'IBM Plex Mono',monospace; font-size:11px; line-height:1.7; color:#55514a;">
+      BORE MATCHES THE STOCK SCREEN Ø30<br>DOSE SET BY A DROP-IN RISER
+    </div>
+  </div>
+
+  <p style="margin:0; font-size:14.5px; line-height:1.6; color:#2e2b26; max-width:960px; text-wrap:pretty;">
+    The pod bore is the same diameter as the Volcano's own screen, so a pod at full depth holds a
+    complete stock bowl and presents the same bed geometry to the pump. Smaller servings come from a
+    perforated riser that lifts the floor — the pod's outside never changes, so every station seals
+    at the same two planes whatever dose is in it.
+  </p>
+
+  <div style="display:grid; grid-template-columns:minmax(0,0.86fr) minmax(0,1.14fr); gap:24px;">
+
+    <!-- ── pod section ── -->
+    <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:14px 16px;">
+      <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16px; margin-bottom:6px;">Section — full setting</div>
+      <svg viewBox="-18 -4 190 84" width="100%" style="display:block;">
+        <defs>
+          <pattern id="pmtl" width="3" height="3" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="3" stroke="#8a857a" stroke-width="0.45"/>
+          </pattern>
+          <pattern id="pherb" width="4" height="4" patternUnits="userSpaceOnUse">
+            <path d="M 0.8,3.2 L 3.2,0.8 M 2.1,3.5 L 3.5,2.1" stroke="#7c8452" stroke-width="0.6"/>
+          </pattern>
+        </defs>
+        <!-- flange -->
+        <rect x="20" y="18" width="105" height="3.6" fill="url(#pmtl)" stroke="#3d3a32" stroke-width="0.9"/>
+        <!-- body walls -->
+        <path d="M 23,21.6 L 23,55.2 L 27.5,55.2 L 27.5,25.6 L 117.5,25.6 L 117.5,55.2 L 122,55.2 L 122,21.6 Z" fill="url(#pmtl)" stroke="#3d3a32" stroke-width="0.9"/>
+        <rect x="27.5" y="51.6" width="90" height="3.6" fill="url(#pmtl)" stroke="#3d3a32" stroke-width="0.9"/>
+        <!-- screens -->
+        <rect x="27.5" y="21.6" width="90" height="1.8" fill="#8a857a"/>
+        <rect x="27.5" y="49.8" width="90" height="1.8" fill="#8a857a"/>
+        <!-- bed -->
+        <rect x="27.5" y="23.4" width="90" height="26.4" fill="url(#pherb)"/>
+        <!-- three support pads on the flange -->
+        <g fill="#c4491c"><rect x="26" y="16.4" width="9" height="1.6"/><rect x="68" y="16.4" width="9" height="1.6"/><rect x="110" y="16.4" width="9" height="1.6"/></g>
+
+        <!-- dims -->
+        <g stroke="#55514a" stroke-width="0.5" fill="none">
+          <line x1="20" y1="8" x2="125" y2="8"/><path d="M 23,6 L 20,8 L 23,10 M 122,6 L 125,8 L 122,10"/>
+          <line x1="20" y1="10" x2="20" y2="17" stroke-dasharray="2 2"/><line x1="125" y1="10" x2="125" y2="17" stroke-dasharray="2 2"/>
+          <line x1="27.5" y1="66" x2="117.5" y2="66"/><path d="M 30.5,64 L 27.5,66 L 30.5,68 M 114.5,64 L 117.5,66 L 114.5,68"/>
+          <line x1="27.5" y1="56" x2="27.5" y2="68" stroke-dasharray="2 2"/><line x1="117.5" y1="56" x2="117.5" y2="68" stroke-dasharray="2 2"/>
+          <line x1="136" y1="23.4" x2="136" y2="49.8"/><path d="M 134,26.4 L 136,23.4 L 138,26.4 M 134,46.8 L 136,49.8 L 138,46.8"/>
+          <line x1="118" y1="23.4" x2="138" y2="23.4" stroke-dasharray="2 2"/><line x1="118" y1="49.8" x2="138" y2="49.8" stroke-dasharray="2 2"/>
+          <line x1="152" y1="18" x2="152" y2="55.2"/><path d="M 150,21 L 152,18 L 154,21 M 150,52.2 L 152,55.2 L 154,52.2"/>
+          <line x1="126" y1="18" x2="154" y2="18" stroke-dasharray="2 2"/><line x1="123" y1="55.2" x2="154" y2="55.2" stroke-dasharray="2 2"/>
+        </g>
+        <g font-size="5.4" fill="#55514a">
+          <text x="72.5" y="5" text-anchor="middle">Ø35 FLANGE</text>
+          <text x="72.5" y="73" text-anchor="middle">Ø30 BORE — matches stock screen</text>
+          <text x="140" y="38" transform="rotate(-90 140 38)" text-anchor="middle">10.0</text>
+          <text x="156" y="38" transform="rotate(-90 156 38)" text-anchor="middle">12.4</text>
+        </g>
+      </svg>
+      <div style="display:flex; gap:22px; margin-top:10px; border-top:1px solid #ece8df; padding-top:10px;">
+        <div style="font-size:12px; line-height:1.45; color:#7a756a;"><span style="color:#c4491c; font-family:'IBM Plex Mono',monospace;">■</span> Three pads carry the pod — the only conduction path into the disc.</div>
+        <div style="font-size:12px; line-height:1.45; color:#7a756a;">Screens are captive top and bottom, so a loaded pod travels either way up.</div>
+      </div>
+    </div>
+
+    <!-- ── riser family ── -->
+    <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:14px 16px;">
+      <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16px; margin-bottom:6px;">The riser sets the serving</div>
+      <svg viewBox="0 0 330 108" width="100%" style="display:block;">
+        <g id="risers">
+          <!-- 0.65 -->
+          <g>
+            <rect x="10" y="14" width="70" height="2.4" fill="#c4491c"/>
+            <path d="M 13,16.4 L 13,38.8 L 16,38.8 L 16,18.8 L 74,18.8 L 74,38.8 L 77,38.8 L 77,16.4 Z" fill="#dcd8cc" stroke="#3d3a32" stroke-width="0.7"/>
+            <rect x="16" y="37.6" width="58" height="1.2" fill="#8a857a"/><rect x="16" y="16.4" width="58" height="1.2" fill="#8a857a"/>
+            <rect x="16" y="17.6" width="58" height="20" fill="url(#pherb)"/>
+            <text x="45" y="52" font-size="9" fill="#191814" text-anchor="middle" font-weight="600">0.65 g</text>
+            <text x="45" y="61" font-size="6.4" fill="#7a756a" text-anchor="middle">no riser · 10.0 bed</text>
+            <text x="45" y="70" font-size="6.4" fill="#c4491c" text-anchor="middle">FULL BOWL</text>
+          </g>
+          <!-- 0.40 -->
+          <g>
+            <rect x="90" y="14" width="70" height="2.4" fill="#d98b5a"/>
+            <path d="M 93,16.4 L 93,38.8 L 96,38.8 L 96,18.8 L 154,18.8 L 154,38.8 L 157,38.8 L 157,16.4 Z" fill="#dcd8cc" stroke="#3d3a32" stroke-width="0.7"/>
+            <rect x="96" y="37.6" width="58" height="1.2" fill="#8a857a"/><rect x="96" y="16.4" width="58" height="1.2" fill="#8a857a"/>
+            <rect x="96" y="30.6" width="58" height="7" fill="#b9b4a6" stroke="#8a857a" stroke-width="0.4"/>
+            <rect x="96" y="17.6" width="58" height="13" fill="url(#pherb)"/>
+            <text x="125" y="52" font-size="9" fill="#191814" text-anchor="middle" font-weight="600">0.40 g</text>
+            <text x="125" y="61" font-size="6.4" fill="#7a756a" text-anchor="middle">3.5 riser · 6.5 bed</text>
+          </g>
+          <!-- 0.25 -->
+          <g>
+            <rect x="170" y="14" width="70" height="2.4" fill="#7d9aa8"/>
+            <path d="M 173,16.4 L 173,38.8 L 176,38.8 L 176,18.8 L 234,18.8 L 234,38.8 L 237,38.8 L 237,16.4 Z" fill="#dcd8cc" stroke="#3d3a32" stroke-width="0.7"/>
+            <rect x="176" y="37.6" width="58" height="1.2" fill="#8a857a"/><rect x="176" y="16.4" width="58" height="1.2" fill="#8a857a"/>
+            <rect x="176" y="25.6" width="58" height="12" fill="#b9b4a6" stroke="#8a857a" stroke-width="0.4"/>
+            <rect x="176" y="17.6" width="58" height="8" fill="url(#pherb)"/>
+            <text x="205" y="52" font-size="9" fill="#191814" text-anchor="middle" font-weight="600">0.25 g</text>
+            <text x="205" y="61" font-size="6.4" fill="#7a756a" text-anchor="middle">6.0 riser · 4.0 bed</text>
+          </g>
+          <!-- 0.15 -->
+          <g>
+            <rect x="250" y="14" width="70" height="2.4" fill="#2d6480"/>
+            <path d="M 253,16.4 L 253,38.8 L 256,38.8 L 256,18.8 L 314,18.8 L 314,38.8 L 317,38.8 L 317,16.4 Z" fill="#dcd8cc" stroke="#3d3a32" stroke-width="0.7"/>
+            <rect x="256" y="37.6" width="58" height="1.2" fill="#8a857a"/><rect x="256" y="16.4" width="58" height="1.2" fill="#8a857a"/>
+            <rect x="256" y="22.6" width="58" height="15" fill="#b9b4a6" stroke="#8a857a" stroke-width="0.4"/>
+            <rect x="256" y="17.6" width="58" height="5" fill="url(#pherb)"/>
+            <text x="285" y="52" font-size="9" fill="#191814" text-anchor="middle" font-weight="600">0.15 g</text>
+            <text x="285" y="61" font-size="6.4" fill="#7a756a" text-anchor="middle">7.5 riser · 2.5 bed</text>
+          </g>
+        </g>
+        <line x1="10" y1="80" x2="320" y2="80" stroke="#d9d4c7" stroke-width="1"/>
+        <text x="10" y="93" font-size="7" fill="#7a756a">Outside envelope is identical across all four —</text>
+        <text x="10" y="103" font-size="7" fill="#7a756a">the disc, clamp and nozzle never change.</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ── table ── -->
+  <div style="background:#fbf9f5; border:1px solid #d9d4c7;">
+    <table style="width:100%; border-collapse:collapse;">
+      <thead><tr style="border-bottom:1px solid #d9d4c7;">
+        <th>SETTING</th><th>RISER</th><th>BED DEPTH</th><th>BED VOLUME</th><th>NOMINAL CHARGE</th><th>BED DEPTH vs STOCK BOWL</th><th>BAND COLOUR</th>
+      </tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #ece8df;"><td style="font-weight:600;">FULL</td><td class="mono">0.0 mm</td><td>10.0 mm</td><td>7.07 cm³</td><td style="font-weight:600;">0.65 g</td><td>1.11 ×</td><td><span style="display:inline-block; width:34px; height:9px; background:#c4491c; vertical-align:middle;"></span></td></tr>
+        <tr style="border-bottom:1px solid #ece8df;"><td style="font-weight:600;">LARGE</td><td class="mono">3.5 mm</td><td>6.5 mm</td><td>4.59 cm³</td><td style="font-weight:600;">0.40 g</td><td>0.72 ×</td><td><span style="display:inline-block; width:34px; height:9px; background:#d98b5a; vertical-align:middle;"></span></td></tr>
+        <tr style="border-bottom:1px solid #ece8df;"><td style="font-weight:600;">MEDIUM</td><td class="mono">6.0 mm</td><td>4.0 mm</td><td>2.83 cm³</td><td style="font-weight:600;">0.25 g</td><td>0.44 ×</td><td><span style="display:inline-block; width:34px; height:9px; background:#7d9aa8; vertical-align:middle;"></span></td></tr>
+        <tr><td style="font-weight:600;">SMALL</td><td class="mono">7.5 mm</td><td>2.5 mm</td><td>1.77 cm³</td><td style="font-weight:600;">0.15 g</td><td>0.28 ×</td><td><span style="display:inline-block; width:34px; height:9px; background:#2d6480; vertical-align:middle;"></span></td></tr>
+      </tbody>
+    </table>
+    <div style="border-top:1px solid #d9d4c7; padding:10px 14px; font-size:12px; color:#7a756a; line-height:1.5;">
+      Charges assume the stock chamber's own packing density — 6.5 cm³ holding about 600 mg. Grind and
+      pack change that, so treat the gram figures as nominal and the volumes as the real spec. Bed depth
+      is compared against a stock bowl at the same Ø30 screen diameter; at equal area, restriction tracks depth.
+    </div>
+  </div>
+
+  <!-- ── capsule route ── -->
+  <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:16px 18px; display:grid; grid-template-columns:300px minmax(0,1fr); gap:24px; align-items:center;">
+    <svg viewBox="0 0 220 96" width="100%" style="display:block;">
+      <path d="M 6,20 L 6,62 L 12,62 L 12,26 L 208,26 L 208,62 L 214,62 L 214,20 Z" fill="url(#pmtl)" stroke="#3d3a32" stroke-width="0.9"/>
+      <rect x="6" y="16" width="208" height="4" fill="url(#pmtl)" stroke="#3d3a32" stroke-width="0.9"/>
+      <text x="110" y="72" font-size="7.5" fill="#3d3a32" text-anchor="middle">CAROUSEL POD, Ø30 BORE</text>
+      <path d="M 12,26 L 12,62 L 62,62 L 62,34 L 158,34 L 158,62 L 208,62 L 208,26 Z" fill="#e6dfd2" stroke="#c4491c" stroke-width="0.9"/>
+      <text x="110" y="88" font-size="7.5" fill="#c4491c" text-anchor="middle">REDUCER SLEEVE — drop-in</text>
+      <rect x="62" y="34" width="96" height="26" fill="#dcd8cc" stroke="#3d3a32" stroke-width="0.9"/>
+      <rect x="64" y="36" width="92" height="1.6" fill="#8a857a"/><rect x="64" y="56.4" width="92" height="1.6" fill="#8a857a"/>
+      <rect x="64" y="37.6" width="92" height="18.8" fill="url(#pherb)"/>
+      <text x="110" y="50" font-size="7" fill="#191814" text-anchor="middle" font-weight="600">S&amp;B CAPSULE</text>
+      <g stroke="#55514a" stroke-width="0.5" fill="none">
+        <line x1="62" y1="8" x2="158" y2="8"/><path d="M 65,6 L 62,8 L 65,10 M 155,6 L 158,8 L 155,10"/>
+      </g>
+      <text x="110" y="5" font-size="6.4" fill="#c4491c" text-anchor="middle">Ø TO MEASURE</text>
+    </svg>
+    <div>
+      <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; margin-bottom:8px;">Or skip custom pods entirely</div>
+      <p style="margin:0 0 9px; font-size:13.5px; line-height:1.58; color:#3f3c35; text-wrap:pretty;">
+        Storz &amp; Bickel already sell a filling chamber with a reducer that seats one of their dosing
+        capsules in the Volcano — so the reduction geometry is proven hardware, not a guess. The same
+        idea drops into this pod as a sleeve: the carousel then runs on stock capsules, and a pod
+        becomes a carrier rather than a consumable.
+      </p>
+      <p style="margin:0; font-size:13.5px; line-height:1.58; color:#3f3c35; text-wrap:pretty;">
+        The trade is dose range. A stock capsule is around 0.15–0.20 g, so this route covers the small
+        end only — worth it as the first prototype, since it removes the pod from the build entirely and
+        leaves just the disc and the two seals to prove. <strong>The sleeve bore has to be measured off a real
+        capsule</strong>; the published figures disagree and the manufacturer's own pages would not load here.
+      </p>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:1px; background:#191814; border:1px solid #191814; font-family:'IBM Plex Mono',monospace;">
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">PLATE</div><div style="font-size:12px; margin-top:3px;">04 OF 08</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">UNITS</div><div style="font-size:12px; margin-top:3px;">mm</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">MATERIAL</div><div style="font-size:12px; margin-top:3px;">ANODISED 6061</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">REV</div><div style="font-size:12px; margin-top:3px;">A</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#c4491c; letter-spacing:0.12em;">STATUS</div><div style="font-size:12px; margin-top:3px; color:#c4491c;">NOT FOR MANUFACTURE</div></div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

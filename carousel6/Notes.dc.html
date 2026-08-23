@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+  <style>
+    body { margin:0; background:#f2efe9; color:#191814;
+           font-family:"IBM Plex Sans","Helvetica Neue",Helvetica,sans-serif;
+           -webkit-font-smoothing:antialiased; }
+    a { color:#c4491c; } a:hover { color:#8f3413; }
+    svg text { font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace; }
+  </style>
+</helmet>
+<div style="box-sizing:border-box; width:1120px; height:1184px; padding:44px 48px 36px; background:#f2efe9; display:flex; flex-direction:column; gap:20px;">
+
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; border-bottom:2px solid #191814; padding-bottom:12px;">
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.18em; color:#c4491c; margin-bottom:8px;">PLATE 07 — RISK REGISTER</div>
+      <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:38px; line-height:1; letter-spacing:-0.015em;">What could stop this working</div>
+    </div>
+    <div style="text-align:right; font-family:'IBM Plex Mono',monospace; font-size:11px; line-height:1.7; color:#55514a;">
+      NOTHING HERE HAS BEEN BUILT OR TESTED<br>FIGURES ARE TARGETS, NOT MEASUREMENTS
+    </div>
+  </div>
+
+  <div style="background:#f7ece4; border-left:3px solid #c4491c; padding:14px 18px;">
+    <div style="font-size:13.5px; line-height:1.55; color:#3f3c35; text-wrap:pretty;">
+      Vendor documentation for the Volcano Hybrid and the dosing capsules was unreachable from this machine —
+      the manufacturer's own domains are blocked here — so the host figures below come from retailer listings and
+      support-page summaries. The chamber capacity, screen diameter, temperature range and power draw are
+      consistent across several independent sources. <strong>Every interface dimension is unverified and must be
+      measured off a real device.</strong>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:22px; flex-grow:1;">
+
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px;">The hard problems</div>
+
+      <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:13px 15px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+          <div style="font-weight:600; font-size:14px;">Heat soak into the queue</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:#fbf9f5; background:#c4491c; padding:2px 6px;">HIGHEST</div>
+        </div>
+        <div style="font-size:12.5px; line-height:1.5; color:#55514a;">Three loaded pods sit 45 mm from a station running at up to 230 °C. Cook them slowly and the session degrades before you get to them. The design answers with a retracting nozzle, a 3 mm still-air gap, a polished deck face as a radiant shield, and three-point pod support. <strong style="color:#3f3c35;">Target is under 60 °C at the queue after three consecutive bags — and that number is a goal, not a result.</strong> It needs a thermocouple mule before anything else gets built.</div>
+      </div>
+
+      <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:13px 15px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+          <div style="font-weight:600; font-size:14px;">The hot seal's service life</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:#fbf9f5; background:#c4491c; padding:2px 6px;">HIGH</div>
+        </div>
+        <div style="font-size:12.5px; line-height:1.5; color:#55514a;">No elastomer survives 230 °C indefinitely, which is why the inlet seal is lapped steel on graphite foil. Graphite is stable at temperature but it is soft: the open question is how many open-close cycles the foil takes before it sheds particles into the air path. Testing is cheap — cycle it a thousand times and look.</div>
+      </div>
+
+      <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:13px 15px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+          <div style="font-weight:600; font-size:14px;">Electronics next to a hot deck</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:#fbf9f5; background:#c4491c; padding:2px 6px;">HIGH</div>
+        </div>
+        <div style="font-size:12.5px; line-height:1.5; color:#55514a;">The motor, Hall sensor and controller live on the upper deck, two decks up from the heat, but a gearmotor rated to 60 °C ambient is a real constraint. Add an NTC on the lower deck and a firmware lockout, and expect to iterate on where the board sits.</div>
+      </div>
+
+      <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:13px 15px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+          <div style="font-weight:600; font-size:14px;">Fines escaping the pods</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:#fbf9f5; background:#7d9aa8; padding:2px 6px;">MEDIUM</div>
+        </div>
+        <div style="font-size:12.5px; line-height:1.5; color:#55514a;">Captive screens hold the charge, but any mesh coarse enough to pass air will pass dust. Over a few sessions that collects in the disc pockets. Not dangerous, but it wants a lip on the pocket and a disc that lifts out for a rinse — both of which are in the design already.</div>
+      </div>
+
+      <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:13px 15px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+          <div style="font-weight:600; font-size:14px;">Top-heaviness</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:#fbf9f5; background:#7d9aa8; padding:2px 6px;">MEDIUM</div>
+        </div>
+        <div style="font-size:12.5px; line-height:1.5; color:#55514a;">Roughly 380 g added 78 mm above a deck that is already 200 mm up, on a 1.8 kg base. Stable on a bench, less forgiving of a knock — and a full balloon pulls sideways. Ballasting the lower deck costs nothing and helps.</div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px;">Measure before cutting metal</div>
+
+      <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:13px 15px; display:flex; flex-direction:column; gap:9px;">
+        <div style="display:flex; gap:10px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#c4491c; flex-shrink:0; padding-top:2px;">01</div><div style="font-size:12.5px; line-height:1.48; color:#3f3c35;"><strong>Chamber housing geometry.</strong> Bore, shelf height, lug profile, retention force. The single interface that cannot be derived — only measured.</div></div>
+        <div style="display:flex; gap:10px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#c4491c; flex-shrink:0; padding-top:2px;">02</div><div style="font-size:12.5px; line-height:1.48; color:#3f3c35;"><strong>Outlet ring face.</strong> Diameter, flatness, and how much gasket preload it will take without distorting.</div></div>
+        <div style="display:flex; gap:10px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#c4491c; flex-shrink:0; padding-top:2px;">03</div><div style="font-size:12.5px; line-height:1.48; color:#3f3c35;"><strong>Pump curve.</strong> Pressure against flow, so bag-fill time at the full setting can be predicted rather than hoped for.</div></div>
+        <div style="display:flex; gap:10px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#c4491c; flex-shrink:0; padding-top:2px;">04</div><div style="font-size:12.5px; line-height:1.48; color:#3f3c35;"><strong>Dosing capsule outside diameter,</strong> if the reducer-sleeve route on plate 08 gets built. Published figures disagree with each other.</div></div>
+      </div>
+
+      <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; margin-top:4px;">Still open</div>
+      <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:13px 15px; display:flex; flex-direction:column; gap:9px;">
+        <div style="font-size:12.5px; line-height:1.48; color:#3f3c35;">Does the Volcano's own temperature control behave with a different thermal load on its outlet? Its sensor sits in the heater block, so probably — but that is an assumption, not a finding.</div>
+        <div style="font-size:12.5px; line-height:1.48; color:#3f3c35; border-top:1px solid #ece8df; padding-top:9px;">Is the queue target reachable without active cooling? If not, the honest fallback is to load fewer pods, or to accept that the last pod in a long session is not the same as the first.</div>
+        <div style="font-size:12.5px; line-height:1.48; color:#3f3c35; border-top:1px solid #ece8df; padding-top:9px;">Can the pressure sensor reliably distinguish the pump running from a draw on the whip? If not, the interlock falls back to a dwell timer and the motor simply refuses to move for a fixed period.</div>
+      </div>
+
+      <div style="background:#fbf9f5; border:1px solid #d9d4c7; padding:13px 15px;">
+        <div style="font-weight:600; font-size:14px; margin-bottom:5px;">If the power fails</div>
+        <div style="font-size:12.5px; line-height:1.5; color:#55514a;">The ring keeps a knurled band and the reduction stays back-drivable, so an unpowered unit is still a hand-indexed carousel. Soft detents hold each station. This is the fallback, not a second product — but it means a dead USB cable does not end the session.</div>
+      </div>
+
+      <div style="background:#efe9df; border:1px solid #d9d4c7; padding:13px 15px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.1em; color:#55514a; margin-bottom:6px;">WARRANTY &amp; APPROVALS</div>
+        <div style="font-size:12.5px; line-height:1.5; color:#55514a;">The Volcano Hybrid is sold as a certified device in several markets. A third-party part sitting in its air path would need its own safety assessment before it could be sold, and fitting one will void the manufacturer's warranty. That is not a reason to stop prototyping — it is a reason not to sell one without doing that work first.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:1px; background:#191814; border:1px solid #191814; font-family:'IBM Plex Mono',monospace;">
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">PLATE</div><div style="font-size:12px; margin-top:3px;">07 OF 08</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">OPEN RISKS</div><div style="font-size:12px; margin-top:3px;">5 LOGGED</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">TO MEASURE</div><div style="font-size:12px; margin-top:3px;">4 ITEMS</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#7a756a; letter-spacing:0.12em;">REV</div><div style="font-size:12px; margin-top:3px;">B</div></div>
+    <div style="background:#f2efe9; padding:9px 12px;"><div style="font-size:9px; color:#c4491c; letter-spacing:0.12em;">STATUS</div><div style="font-size:12px; margin-top:3px; color:#c4491c;">NOT FOR MANUFACTURE</div></div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
